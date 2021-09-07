@@ -130,8 +130,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="230dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,29 +139,36 @@
         >
 
        <EditText
-        android:id="@+id/EnterGeneralTimeInputHours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"/>
+            android:id="@+id/EnterGeneralTimeInputHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@drawable/edit_text_border"
+            android:layout_weight="0.45"/>
 
         <TextView
             android:id="@+id/hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="h "
+            android:text="h"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="0.15"
+            android:layout_marginLeft="2dp"
+            />
 
         <EditText
             android:id="@+id/EnterGeneralTimeInputMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:background="@drawable/edit_text_border"
+            android:layout_weight="0.45"/>
 
         <TextView
             android:id="@+id/minutes"
@@ -171,11 +178,101 @@
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:layout_marginLeft="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="0.25"/>
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/productiveTimeQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="270dp"
+        android:text="You answered you spend Xh and Xmin on your phone. \nHow much of that time have you been productive for?"
+        android:textColor="@color/colorBlack"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/EnterProductiveTimeList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="230dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <EditText
+            android:id="@+id/EnterProductiveTimeInputHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@drawable/edit_text_border"
+            android:layout_weight="0.45"/>
+
+        <TextView
+            android:id="@+id/hours1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="h"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="0.15"
+            android:layout_marginLeft="2dp"
+            />
+
+        <EditText
+            android:id="@+id/EnterProductiveTimeInputMinutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@drawable/edit_text_border"
+            android:layout_weight="0.45"/>
+
+        <TextView
+            android:id="@+id/minutes1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="0.25"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ScreenTimeHistory"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/submit_button_inactive"
+        android:text="submit answers"
+        android:textColor="@color/colorGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
