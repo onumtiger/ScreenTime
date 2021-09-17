@@ -36,9 +36,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".qOneActivity" />
+        <activity android:name=".qTwoActivity" />
+        <activity android:name=".qThreeActivity" />
+        <activity android:name=".screenTimeScoreActivity" />
+        <activity android:name=".noMeasuresOneActivity" />
+        <activity android:name=".noMeasuresTwoActivity" />
+        <activity android:name=".screenTimeQuestionnaireActivity" />
+        <activity android:name=".screenTimeQuestionnaireEmptyActivity" />
+        <activity android:name=".screenTimeQuestionnaireEvaluationActivity" />
+        <activity android:name=".studyFinishedActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>

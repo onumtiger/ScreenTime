@@ -73,14 +73,28 @@
             android:layout_weight="0.1"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/InputHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="Your participation ID needs to be added"
+        android:textColor="@color/colorRed"
+        android:textSize="11sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="150dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <Button
         android:id="@+id/StartButton"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:background="@color/colorGrey"
-        android:clickable="false"
-        android:enabled="false"
+        android:background="@color/colorBlue"
         android:text="Start study"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
