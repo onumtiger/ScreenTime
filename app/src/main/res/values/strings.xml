@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ScreenTime</string>
+    <string name="questionOne">Question</string>
+    <string name="questionOneAnswerOne">Answer 1</string>
+    <string name="questionOneAnswerTwo">Answer 2</string>
+    <string name="questionOneAnswerThree">Answer 3</string>
 </resources>

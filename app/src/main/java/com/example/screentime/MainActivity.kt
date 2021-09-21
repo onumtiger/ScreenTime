@@ -14,11 +14,13 @@ import android.widget.TextView
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.getField
-import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
+import com.google.firebase.firestore.auth.User
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,37 +48,38 @@ class MainActivity : AppCompatActivity() {
             .whereEqualTo("deviceId", deviceId)
             .get().addOnSuccessListener { snapshots ->
                 if (snapshots.documents.isNotEmpty()) {
+                    Log.d("snapshots", snapshots.toString())
                     val currentParticipant = snapshots.documents[0]
                     checkGroup(currentParticipant)
-//                    val qOneAnswered = checkQOneAnswered(currentParticipant)
-//                    if (qOneAnswered){
-//                        val studyPhase = checkStudyPhase(currentParticipant, currentDate)
-//
-//                        when (studyPhase) {
-//                            "noMeasuresOne" -> launchNoMeasuresOne()
-//                            "measuresOne" -> {
-//                                checkGroup(currentParticipant)
-//                            }
-//                            "measuresTwo" -> {
-//                                when (checkQTwoAnswered(currentParticipant)) {
-//                                    "false" -> launchQTwo()
-//                                    "true" -> {
-//                                        checkGroup(currentParticipant)
-//                                    }
-//                                }
-//                            }
-//                            "noMeasuresTwo" -> {
-//                                when (checkQThreeAnswered(currentParticipant)) {
-//                                    "false" -> launchQThree()
-//                                    "true" -> launchNoMeasuresTwo()
-//                                }
-//                            }
-//                            "studyIsFinished" -> launchStudyFinished()
-//                        }
-//                    }
-//                    else {
-//                        launchQOne()
-//                    }
+                    val qOneAnswered = checkQOneAnswered(currentParticipant)
+                    if (qOneAnswered){
+                        val studyPhase = checkStudyPhase(currentParticipant, currentDate)
+
+                        when (studyPhase) {
+                            "noMeasuresOne" -> launchNoMeasuresOne()
+                            "measuresOne" -> {
+                                checkGroup(currentParticipant)
+                            }
+                            "measuresTwo" -> {
+                                when (checkQTwoAnswered(currentParticipant)) {
+                                    "false" -> launchQTwo()
+                                    "true" -> {
+                                        checkGroup(currentParticipant)
+                                    }
+                                }
+                            }
+                            "noMeasuresTwo" -> {
+                                when (checkQThreeAnswered(currentParticipant)) {
+                                    "false" -> launchQThree()
+                                    "true" -> launchNoMeasuresTwo()
+                                }
+                            }
+                            "studyIsFinished" -> launchStudyFinished()
+                        }
+                    }
+                    else {
+                        launchQOne(currentParticipant.get("studyID").toString())
+                    }
                 }
                 else {
                     setContentView(R.layout.activity_main)
@@ -86,14 +89,16 @@ class MainActivity : AppCompatActivity() {
                     val submitButton = findViewById<Button>(R.id.StartButton)
                     val inputHintView:TextView = findViewById(R.id.InputHint)
 
+                    val currentParticipantID = inputParticipationId.text.toString()
+
 
                     submitButton.setOnClickListener{
-                        if(inputParticipationId.text.toString().isEmpty()){
+                        if(currentParticipantID.isEmpty()){
                             inputHintView.visibility = View.VISIBLE
                         }
                         else {
-                            addDevice(inputParticipationId.text.toString(), deviceId, currentDate)
-                            launchQOne()
+                            addDevice(currentParticipantID, deviceId, currentDate)
+                            launchQOne(currentParticipantID)
                         }
                     }
                 }
@@ -106,8 +111,9 @@ class MainActivity : AppCompatActivity() {
         this.dbParticipants.document(userId).update("startDate", currentDate)
     }
 
-    private fun launchQOne() {
+    private fun launchQOne(currentParticipantID: String) {
         val intent = Intent(this, qOneActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
         startActivity(intent)
         finish()
     }
@@ -142,75 +148,50 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun checkQOneAnswered(snapshot: DocumentSnapshot):Boolean {
-        if(snapshot.get("qOne").toString() == "false"){
+    private fun checkQOneAnswered(currentParticipant: DocumentSnapshot):Boolean {
+        if(currentParticipant.get("qOne").toString() == "false"){
             return false
         }
         return true
     }
 
-    private fun checkQTwoAnswered(snapshot: DocumentSnapshot): String {
-        return snapshot.get("qTwo").toString()
+    private fun checkQTwoAnswered(currentParticipant: DocumentSnapshot): String {
+        return currentParticipant.get("qTwo").toString()
     }
 
-    private fun checkQThreeAnswered(snapshot: DocumentSnapshot): String {
-        return snapshot.get("qThree").toString()
+    private fun checkQThreeAnswered(currentParticipant: DocumentSnapshot): String {
+        return currentParticipant.get("qThree").toString()
     }
 
-    private fun checkGroup(snapshot: DocumentSnapshot) {
-        when (snapshot.getString("group")) {
+    private fun checkGroup(currentParticipant: DocumentSnapshot) {
+        when (currentParticipant.getString("group")) {
             "a" -> {
                 val intent = Intent(this, screenTimeScoreActivity::class.java)
                 startActivity(intent)
                 finish()
             }
-            "b" -> checkScreenTimeAnswered(snapshot)
+            "b" -> checkScreenTimeAnswered(currentParticipant)
         }
     }
 
-    private fun checkScreenTimeAnswered(snapshot: DocumentSnapshot) {
-        // TODO get screentimeAnswered
-        val snapshotData = snapshot.data
-        val snapshotDataJson = Gson().toJson(snapshot.data)
-        Log.d("snapshotDataJson", snapshotDataJson.toString())
+    private fun checkScreenTimeAnswered(currentParticipant: DocumentSnapshot) {
+        val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
+        val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
+        val answeredQuestionnaire: Boolean = lastScreenTimeEntry["answered"] as Boolean
+        val evaluatedResult: Boolean = lastScreenTimeEntry["evaluated"] as Boolean
 
-
-
-
-
-
-        val sds = snapshotData?.get("screenTimeEntries")
-        Log.d("sds", sds.toString())
-
-
-        val sTE: MutableMap<Int, Map<String, String>>  = snapshotData?.get("screenTimeEntries") as MutableMap<Int, Map<String, String>>
-        val steJ = Gson().toJson(sTE)
-        Log.d("steJ", steJ.toString())
-        val entry = steJ.get(1)
-        Log.d("entry", entry.toString())
-
-        // TODO die screentime data einträge können immer noch nicht einzelnd ausgelesen werden
-
-
-
-//        val answered = false
-//        if (answered) {
-//            checkEvaluation(snapshot)
-//        }
-//        else {
-//            val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
+        if (answeredQuestionnaire) {
+            checkEvaluation(evaluatedResult)
+        }
+        else {
+            val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
-    private fun checkEvaluation(snapshot: DocumentSnapshot){
-//        var screenTimeEntries = snapshot.get("screenTimeEntries")
-        // TODO: 15.09.21 get screentime entries
-
-        val evaluated = false
-
+    private fun checkEvaluation(evaluatedResult: Boolean){
         var intent: Intent
-        if (evaluated) {
+        if (evaluatedResult) {
             intent = Intent(this, screenTimeQuestionnaireActivity::class.java)
         }
         else {
@@ -222,6 +203,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkStudyPhase(snapshot: DocumentSnapshot, currentDate: String): String{
         val startDate = snapshot.getString("startDate")
+        Log.d("startDate", startDate)
+        Log.d("currentDate", currentDate)
         val startDay = startDate!!.substringBefore(".")
         val startMonth = startDate!!.substringAfter(".")
 

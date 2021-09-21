@@ -5,7 +5,10 @@
       <map>
         <entry key="app/src/main/res/font/roboto_slab.xml" value="0.36822916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2498134529204546" />
+        <entry key="app/src/main/res/layout/q_one.xml" value="0.1" />
         <entry key="app/src/main/res/layout/screentime_questionnaire.xml" value="0.32395833333333335" />
+        <entry key="app/src/main/res/layout/screentime_questionnaire_empty.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/screentime_questionnaire_evaluation.xml" value="0.18697916666666667" />
       </map>
     </option>
   </component>
