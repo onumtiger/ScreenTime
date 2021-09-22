@@ -20,7 +20,7 @@ import kotlin.collections.HashMap
 import com.google.firebase.firestore.auth.User
 
 
-// TODO noMeasuresOne + noMeasuresTwo + studyFinished + group b
+// TODO 22.09 group b + screentime calculation
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         Log.d("AppCompatActivity", "AppCompatActivity")
-
 
         // firebase
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     when (checkQOneAnswered(currentParticipant)) {
                         true -> {
                             when (checkStudyPhase(currentParticipant, currentDate)) {
-                                "noMeasuresOne" -> launchNoMeasuresOne()
+                                "noMeasuresOne" -> launchNoMeasuresOne(currentDate, currentParticipant.getString("startDate")!!)
                                 "measuresOne" -> {
                                     checkGroup(currentParticipant)
                                 }
@@ -73,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                                         true -> {
                                             when (checkQThreeAnswered(currentParticipant)) {
                                                 false -> launchQThree(currentParticipantID)
-                                                true -> launchNoMeasuresTwo()
+                                                true -> launchNoMeasuresTwo(currentDate, currentParticipant.getString("startDate")!!)
                                             }
                                         }
                                     }
@@ -84,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                                         true -> {
                                             when (checkQThreeAnswered(currentParticipant)) {
                                                 false -> launchQThree(currentParticipantID)
-                                                true -> launchStudyFinished()
+                                                true -> launchNoMeasuresTwo(currentDate, currentParticipant.getString("startDate")!!)
                                             }
                                         }
                                     }
@@ -143,20 +142,18 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun launchStudyFinished(){
-        val intent = Intent(this, studyFinishedActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun launchNoMeasuresOne(){
+    private fun launchNoMeasuresOne(currentDate: String, startDate: String){
         val intent = Intent(this, noMeasuresOneActivity::class.java)
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("startDate", startDate)
         startActivity(intent)
         finish()
     }
 
-    private fun launchNoMeasuresTwo(){
+    private fun launchNoMeasuresTwo(currentDate: String, startDate: String){
         val intent = Intent(this, noMeasuresTwoActivity::class.java)
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("startDate", startDate)
         startActivity(intent)
         finish()
     }
@@ -220,8 +217,8 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun checkStudyPhase(snapshot: DocumentSnapshot, currentDate: String): String{
-        val startDate = snapshot.getString("startDate")
+    private fun checkStudyPhase(currentParticipant: DocumentSnapshot, currentDate: String): String{
+        val startDate = currentParticipant.getString("startDate")
         Log.d("startDate", startDate)
         Log.d("currentDate", currentDate)
         val startDay = startDate!!.substringBefore(".")
@@ -238,6 +235,8 @@ class MainActivity : AppCompatActivity() {
         else {
             difference = 30 - startDay.toInt() + currentDay.toInt()
         }
+
+        Log.d("difference", difference.toString())
 
         return when {
             difference >= 28 -> "studyIsFinished"

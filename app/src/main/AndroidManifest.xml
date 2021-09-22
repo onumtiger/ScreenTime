@@ -45,7 +45,6 @@
         <activity android:name=".screenTimeQuestionnaireActivity" />
         <activity android:name=".screenTimeQuestionnaireEmptyActivity" />
         <activity android:name=".screenTimeQuestionnaireEvaluationActivity" />
-        <activity android:name=".studyFinishedActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
