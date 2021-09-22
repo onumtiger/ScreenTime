@@ -1,7 +1,27 @@
 <resources>
     <string name="app_name">ScreenTime</string>
-    <string name="questionOne">Question</string>
+    <string name="questionOne">Question 1</string>
     <string name="questionOneAnswerOne">Answer 1</string>
     <string name="questionOneAnswerTwo">Answer 2</string>
     <string name="questionOneAnswerThree">Answer 3</string>
+
+    <string name="questionTwo">Question 2</string>
+    <string name="questionTwoAnswerOne">Answer 1</string>
+    <string name="questionTwoAnswerTwo">Answer 2</string>
+    <string name="questionTwoAnswerThree">Answer 3</string>
+
+    <string name="questionThree">Question 3</string>
+    <string name="questionThreeAnswerOne">Answer 1</string>
+    <string name="questionThreeAnswerTwo">Answer 2</string>
+    <string name="questionThreeAnswerThree">Answer 3</string>
+
+    <string name="questionFour">Question 4</string>
+    <string name="questionFourAnswerOne">Answer 1</string>
+    <string name="questionFourAnswerTwo">Answer 2</string>
+    <string name="questionFourAnswerThree">Answer 3</string>
+
+    <string name="questionFive">Question 5</string>
+    <string name="questionFiveAnswerOne">Answer 1</string>
+    <string name="questionFiveAnswerTwo">Answer 2</string>
+    <string name="questionFiveAnswerThree">Answer 3</string>
 </resources>

@@ -20,7 +20,7 @@ import kotlin.collections.HashMap
 import com.google.firebase.firestore.auth.User
 
 
-
+// TODO noMeasuresOne + noMeasuresTwo + studyFinished + group b
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,35 +50,48 @@ class MainActivity : AppCompatActivity() {
                 if (snapshots.documents.isNotEmpty()) {
                     Log.d("snapshots", snapshots.toString())
                     val currentParticipant = snapshots.documents[0]
+                    val currentParticipantID = currentParticipant.get("studyID").toString()
                     checkGroup(currentParticipant)
-                    val qOneAnswered = checkQOneAnswered(currentParticipant)
-                    if (qOneAnswered){
-                        val studyPhase = checkStudyPhase(currentParticipant, currentDate)
-
-                        when (studyPhase) {
-                            "noMeasuresOne" -> launchNoMeasuresOne()
-                            "measuresOne" -> {
-                                checkGroup(currentParticipant)
-                            }
-                            "measuresTwo" -> {
-                                when (checkQTwoAnswered(currentParticipant)) {
-                                    "false" -> launchQTwo()
-                                    "true" -> {
-                                        checkGroup(currentParticipant)
+                    when (checkQOneAnswered(currentParticipant)) {
+                        true -> {
+                            when (checkStudyPhase(currentParticipant, currentDate)) {
+                                "noMeasuresOne" -> launchNoMeasuresOne()
+                                "measuresOne" -> {
+                                    checkGroup(currentParticipant)
+                                }
+                                "measuresTwo" -> {
+                                    when (checkQTwoAnswered(currentParticipant)) {
+                                        false -> launchQTwo(currentParticipantID)
+                                        true -> {
+                                            checkGroup(currentParticipant)
+                                        }
+                                    }
+                                }
+                                "noMeasuresTwo" -> {
+                                    when (checkQTwoAnswered(currentParticipant)){
+                                        false -> launchQTwo(currentParticipantID)
+                                        true -> {
+                                            when (checkQThreeAnswered(currentParticipant)) {
+                                                false -> launchQThree(currentParticipantID)
+                                                true -> launchNoMeasuresTwo()
+                                            }
+                                        }
+                                    }
+                                }
+                                "studyIsFinished" -> {
+                                    when (checkQTwoAnswered(currentParticipant)){
+                                        false -> launchQTwo(currentParticipantID)
+                                        true -> {
+                                            when (checkQThreeAnswered(currentParticipant)) {
+                                                false -> launchQThree(currentParticipantID)
+                                                true -> launchStudyFinished()
+                                            }
+                                        }
                                     }
                                 }
                             }
-                            "noMeasuresTwo" -> {
-                                when (checkQThreeAnswered(currentParticipant)) {
-                                    "false" -> launchQThree()
-                                    "true" -> launchNoMeasuresTwo()
-                                }
-                            }
-                            "studyIsFinished" -> launchStudyFinished()
                         }
-                    }
-                    else {
-                        launchQOne(currentParticipant.get("studyID").toString())
+                        false -> launchQOne(currentParticipantID)
                     }
                 }
                 else {
@@ -89,10 +102,8 @@ class MainActivity : AppCompatActivity() {
                     val submitButton = findViewById<Button>(R.id.StartButton)
                     val inputHintView:TextView = findViewById(R.id.InputHint)
 
-                    val currentParticipantID = inputParticipationId.text.toString()
-
-
                     submitButton.setOnClickListener{
+                        val currentParticipantID = inputParticipationId.text.toString()
                         if(currentParticipantID.isEmpty()){
                             inputHintView.visibility = View.VISIBLE
                         }
@@ -118,14 +129,16 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun launchQTwo() {
+    private fun launchQTwo(currentParticipantID: String) {
         val intent = Intent(this, qTwoActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
         startActivity(intent)
         finish()
     }
 
-    private fun launchQThree() {
+    private fun launchQThree(currentParticipantID: String) {
         val intent = Intent(this, qThreeActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
         startActivity(intent)
         finish()
     }
@@ -155,12 +168,18 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun checkQTwoAnswered(currentParticipant: DocumentSnapshot): String {
-        return currentParticipant.get("qTwo").toString()
+    private fun checkQTwoAnswered(currentParticipant: DocumentSnapshot): Boolean {
+        if(currentParticipant.get("qTwo").toString() == "false"){
+            return false
+        }
+        return true
     }
 
-    private fun checkQThreeAnswered(currentParticipant: DocumentSnapshot): String {
-        return currentParticipant.get("qThree").toString()
+    private fun checkQThreeAnswered(currentParticipant: DocumentSnapshot): Boolean {
+        if(currentParticipant.get("qThree").toString() == "false"){
+            return false
+        }
+        return true
     }
 
     private fun checkGroup(currentParticipant: DocumentSnapshot) {

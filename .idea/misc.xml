@@ -5,10 +5,17 @@
       <map>
         <entry key="app/src/main/res/font/roboto_slab.xml" value="0.36822916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2498134529204546" />
-        <entry key="app/src/main/res/layout/q_one.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/blocked_overview.xml" value="0.428125" />
+        <entry key="app/src/main/res/layout/q_one.xml" value="0.49466071703139886" />
+        <entry key="app/src/main/res/layout/q_three.xml" value="0.44067028985507245" />
+        <entry key="app/src/main/res/layout/q_two.xml" value="0.44067028985507245" />
+        <entry key="app/src/main/res/layout/screentime_history_entry_questionnaire.xml" value="0.428125" />
+        <entry key="app/src/main/res/layout/screentime_history_entry_score.xml" value="0.428125" />
+        <entry key="app/src/main/res/layout/screentime_history_list.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_questionnaire.xml" value="0.32395833333333335" />
         <entry key="app/src/main/res/layout/screentime_questionnaire_empty.xml" value="0.1" />
         <entry key="app/src/main/res/layout/screentime_questionnaire_evaluation.xml" value="0.18697916666666667" />
+        <entry key="app/src/main/res/layout/screentime_score.xml" value="0.428125" />
       </map>
     </option>
   </component>

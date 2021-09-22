@@ -94,7 +94,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:background="@color/colorBlue"
+        android:background="@color/colorGreen"
         android:text="Start study"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"

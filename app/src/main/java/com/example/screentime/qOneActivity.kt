@@ -1,21 +1,27 @@
 package com.example.screentime
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 class qOneActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
     var questionOneAnswer = ""
-
-    // TODO https://developer.android.com/guide/topics/ui/controls/radiobutton
-    // TODO make radion button arrangement inline and question above like in this link
+    var questionTwoAnswer = ""
+    var questionThreeAnswer = ""
+    var questionFourAnswer = ""
+    var questionFiveAnswer = ""
+    lateinit var questionnairesAnsweres: MutableMap<String, String>
+    lateinit var submitButton: Button
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,42 +31,152 @@ class qOneActivity: AppCompatActivity() {
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
         setContentView(R.layout.q_one)
         val userId:String = intent.getStringExtra("currentParticipantID")
-        val submitButton = findViewById<Button>(R.id.SubmitQOne)
+        submitButton = findViewById(R.id.SubmitQOne)
+        val submitQOneHintView = findViewById<TextView>(R.id.SubmitQOneHint)
 
-
-        // TODO check wether all questions are answered
         submitButton.setOnClickListener{
-            val questionnairesAnsweres = mutableMapOf("1" to questionOneAnswer, "2" to "y", "3" to "zz")
-            // TODO update firebase so dass userid nicht mehr verändert werden muss
-            dbParticipants.document("0$userId").update("qOneAnswers", questionnairesAnsweres)
-            dbParticipants.document("0$userId").update("qOne", true)
-            // TODO: start next intent e.g. main activity to evaluate where to go next
+            if (Collections.frequency(questionnairesAnsweres.values, "") == 0) {
+                dbParticipants.document("$userId").update("qOneAnswers", questionnairesAnsweres)
+                dbParticipants.document("$userId").update("qOne", true)
+
+                startMainActivity()
+            }
+            else{
+                submitQOneHintView.visibility = View.VISIBLE
+            }
         }
     }
 
-    fun onRadioButtonClicked(view: View) {
+    fun startMainActivity(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun activateSubmitButton(){
+        this.questionnairesAnsweres = mutableMapOf(
+            "1" to this.questionOneAnswer,
+            "2" to this.questionTwoAnswer,
+            "3" to this.questionThreeAnswer,
+            "4" to this.questionFourAnswer,
+            "5" to this.questionFiveAnswer
+        )
+
+        if (Collections.frequency(questionnairesAnsweres.values, "") == 0){
+            submitButton.setBackgroundColor(resources.getColor(R.color.colorGreen))
+            submitButton.setTextColor(resources.getColor(R.color.colorWhite))
+            submitButton.isEnabled = true
+            submitButton.isClickable = true
+        }
+    }
+
+    fun questionOneClicked(view: View) {
         if (view is RadioButton) {
-            // Is the button now checked?
             val checked = view.isChecked
 
-            // Check which radio button was clicked
             when (view.getId()) {
                 R.id.questionOneAnswerOne ->
                     if (checked) {
-                        this.questionOneAnswer = "questionOneAnswerOne"
+                        this.questionOneAnswer = resources.getString(R.string.questionOneAnswerOne)
                     }
                 R.id.questionOneAnswerTwo ->
                     if (checked) {
-                        this.questionOneAnswer = "questionOneAnswerTwo"
+                        this.questionOneAnswer = resources.getString(R.string.questionOneAnswerTwo)
                     }
                 R.id.questionOneAnswerThree ->
                     if (checked) {
-                        this.questionOneAnswer = "questionOneAnswerThree"
+                        this.questionOneAnswer = resources.getString(R.string.questionOneAnswerThree)
                     }
             }
-            Log.d("questionOneAnswer", this.questionOneAnswer)
         }
+        activateSubmitButton()
     }
 
+    fun questionTwoClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
 
+            when (view.getId()) {
+                R.id.questionTwoAnswerOne ->
+                    if (checked) {
+                        this.questionTwoAnswer = resources.getString(R.string.questionTwoAnswerOne)
+                    }
+                R.id.questionTwoAnswerTwo ->
+                    if (checked) {
+                        this.questionTwoAnswer = resources.getString(R.string.questionTwoAnswerTwo)
+                    }
+                R.id.questionTwoAnswerThree ->
+                    if (checked) {
+                        this.questionTwoAnswer = resources.getString(R.string.questionTwoAnswerThree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionThreeClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionThreeAnswerOne ->
+                    if (checked) {
+                        this.questionThreeAnswer = resources.getString(R.string.questionThreeAnswerOne)
+                    }
+                R.id.questionThreeAnswerTwo ->
+                    if (checked) {
+                        this.questionThreeAnswer = resources.getString(R.string.questionThreeAnswerTwo)
+                    }
+                R.id.questionThreeAnswerThree ->
+                    if (checked) {
+                        this.questionThreeAnswer = resources.getString(R.string.questionThreeAnswerThree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionFourClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionFourAnswerOne ->
+                    if (checked) {
+                        this.questionFourAnswer = resources.getString(R.string.questionFourAnswerOne)
+                    }
+                R.id.questionFourAnswerTwo ->
+                    if (checked) {
+                        this.questionFourAnswer = resources.getString(R.string.questionFourAnswerTwo)
+                    }
+                R.id.questionFourAnswerThree ->
+                    if (checked) {
+                        this.questionFourAnswer = resources.getString(R.string.questionFourAnswerThree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionFiveClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionFiveAnswerOne ->
+                    if (checked) {
+                        this.questionFiveAnswer = resources.getString(R.string.questionFiveAnswerOne)
+                    }
+                R.id.questionFiveAnswerTwo ->
+                    if (checked) {
+                        this.questionFiveAnswer = resources.getString(R.string.questionFiveAnswerTwo)
+                    }
+                R.id.questionFiveAnswerThree ->
+                    if (checked) {
+                        this.questionFiveAnswer = resources.getString(R.string.questionFiveAnswerThree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
 }

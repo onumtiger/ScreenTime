@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="70dp"
-        android:text="Please answer the first questionnaire on your screen time behavior:"
+        android:text="Please answer the third questionnaire on your screen time behavior:"
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
             android:minHeight="48dp"
             android:onClick="questionOneClicked"
             android:text="@string/questionOneAnswerOne"
-             />
+            />
 
         <RadioButton
             android:id="@+id/questionOneAnswerTwo"
@@ -317,7 +317,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/SubmitQOneHint"
+        android:id="@+id/SubmitQThreeHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -329,12 +329,12 @@
         android:textColor="@color/colorRed"
         android:textSize="11sp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/SubmitQOne"
+        app:layout_constraintBottom_toTopOf="@+id/SubmitQThree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/SubmitQOne"
+        android:id="@+id/SubmitQThree"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
