@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="290dp"
-        android:text="Productivity score:"
+        android:text="Productive time:"
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"

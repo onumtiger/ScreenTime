@@ -50,19 +50,19 @@ class MainActivity : AppCompatActivity() {
                     Log.d("snapshots", snapshots.toString())
                     val currentParticipant = snapshots.documents[0]
                     val currentParticipantID = currentParticipant.get("studyID").toString()
-                    checkGroup(currentParticipant)
+                    checkGroup(currentParticipant, currentParticipantID, currentDate)
                     when (checkQOneAnswered(currentParticipant)) {
                         true -> {
                             when (checkStudyPhase(currentParticipant, currentDate)) {
                                 "noMeasuresOne" -> launchNoMeasuresOne(currentDate, currentParticipant.getString("startDate")!!)
                                 "measuresOne" -> {
-                                    checkGroup(currentParticipant)
+                                    checkGroup(currentParticipant, currentParticipantID, currentDate)
                                 }
                                 "measuresTwo" -> {
                                     when (checkQTwoAnswered(currentParticipant)) {
                                         false -> launchQTwo(currentParticipantID)
                                         true -> {
-                                            checkGroup(currentParticipant)
+                                            checkGroup(currentParticipant, currentParticipantID, currentDate)
                                         }
                                     }
                                 }
@@ -179,18 +179,20 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun checkGroup(currentParticipant: DocumentSnapshot) {
+    private fun checkGroup(currentParticipant: DocumentSnapshot, currentParticipantID: String, currentDate: String) {
         when (currentParticipant.getString("group")) {
             "a" -> {
                 val intent = Intent(this, screenTimeScoreActivity::class.java)
+                intent.putExtra("currentDate", currentDate)
+                intent.putExtra("currentParticipantID", currentParticipantID)
                 startActivity(intent)
                 finish()
             }
-            "b" -> checkScreenTimeAnswered(currentParticipant)
+            "b" -> checkScreenTimeAnswered(currentParticipant, currentParticipantID, currentDate)
         }
     }
 
-    private fun checkScreenTimeAnswered(currentParticipant: DocumentSnapshot) {
+    private fun checkScreenTimeAnswered(currentParticipant: DocumentSnapshot, currentParticipantID: String, currentDate: String) {
         val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
         val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
         val answeredQuestionnaire: Boolean = lastScreenTimeEntry["answered"] as Boolean
@@ -201,6 +203,8 @@ class MainActivity : AppCompatActivity() {
         }
         else {
             val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
+            intent.putExtra("currentDate", currentDate)
+            intent.putExtra("currentParticipantID", currentParticipantID)
             startActivity(intent)
             finish()
         }
