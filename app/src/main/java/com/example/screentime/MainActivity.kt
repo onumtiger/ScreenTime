@@ -20,7 +20,7 @@ import kotlin.collections.HashMap
 import com.google.firebase.firestore.auth.User
 
 
-// TODO 22.09 group b + screentime calculation
+// TODO 22.09 group b + screentime calculation + checkfirebase entries when empty?? new date??
 
 
 class MainActivity : AppCompatActivity() {
@@ -98,16 +98,18 @@ class MainActivity : AppCompatActivity() {
 
                     // view elements
                     val inputParticipationId : EditText = findViewById(R.id.EnterParticipationID)
+                    val inputApiKey : EditText = findViewById(R.id.EnterApiKey)
                     val submitButton = findViewById<Button>(R.id.StartButton)
                     val inputHintView:TextView = findViewById(R.id.InputHint)
 
                     submitButton.setOnClickListener{
                         val currentParticipantID = inputParticipationId.text.toString()
-                        if(currentParticipantID.isEmpty()){
+                        val currentParticipantApiKey = inputApiKey.text.toString()
+                        if(currentParticipantID.isEmpty() || currentParticipantApiKey.isEmpty()){
                             inputHintView.visibility = View.VISIBLE
                         }
                         else {
-                            addDevice(currentParticipantID, deviceId, currentDate)
+                            addDevice(currentParticipantID, deviceId, currentDate, currentParticipantApiKey)
                             launchQOne(currentParticipantID)
                         }
                     }
@@ -115,10 +117,11 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun addDevice(userId: String, deviceId: String, currentDate: String) {
+    private fun addDevice(userId: String, deviceId: String, currentDate: String, currentParticipantApiKey:String) {
         Log.d("firebase", "add device")
         this.dbParticipants.document(userId).update("deviceId", deviceId)
         this.dbParticipants.document(userId).update("startDate", currentDate)
+        this.dbParticipants.document(userId).update("apiKey", currentParticipantApiKey)
     }
 
     private fun launchQOne(currentParticipantID: String) {

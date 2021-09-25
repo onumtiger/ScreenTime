@@ -12,6 +12,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import okhttp3.ResponseBody
+import java.lang.Exception
+import org.json.JSONArray
+
+import org.json.JSONObject
+
+
+
 
 class screenTimeScoreActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
@@ -34,6 +42,8 @@ class screenTimeScoreActivity: AppCompatActivity() {
             }
 
             val currentParticipant = snapshots.documents[0]
+
+            getScreenTimeFromApi(currentParticipant, currentDate)
 
 //            checkScreenTimeEntries(currentParticipant, currentDate)
             val screenTimeInfo = getScreenTimeEntry(currentParticipant)
@@ -71,12 +81,28 @@ class screenTimeScoreActivity: AppCompatActivity() {
         val currentDay = currentDate.substringBefore(".")
         val currentMonth = currentDate.substringAfter(".")
 
-        val client: OkHttpClient = OkHttpClient()
+        val thread = Thread {
+            try {
+                val client: OkHttpClient = OkHttpClient()
 
-        val request: Request = Request.Builder().url("https://www.rescuetime.com/anapi/data?key=$apiKey&format=json&perspective=interval&restrict_kind=activity&interval=hour&restrict_begin=2021-$currentMonth-$currentDay").build()
+                val request: Request = Request.Builder().url("https://www.rescuetime.com/anapi/data?key=$apiKey&format=json&perspective=interval&restrict_kind=activity&interval=hour&restrict_begin=2021-$currentMonth-$currentDay").build()
 
-        client.newCall(request).execute().use { response -> response = response.body()!! }
+                var apiResponse = client.newCall(request).execute()
+
+                val jsonData: String = apiResponse.body!!.string()
+                val jobject = JSONObject(jsonData)
+
+//                client.newCall(request).execute().use { response -> apiResponse = response.body!! }
+
+                Log.d("apiResponse", jobject.toString())
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
+
+        thread.start()
+
+    }
 
     // TODO: calculateScreenTime and add it to userprofile then display it
     fun addScreenTimeEntry() {}

@@ -54,11 +54,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="A"
             android:background="@null"
+            android:text="A"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp"
-            />
+            android:textColorHint="@android:color/transparent"
+            android:textColorLink="@android:color/transparent"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/productivityScoreButtonB"
@@ -195,7 +196,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="270dp"
-        android:text="You answered you spend Xh and Xmin on your phone. \nHow much of that time have you been productive for?"
+        android:text="You answered you spend 0h and 0min on your phone. \nHow much of that time have you been productive for?"
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -264,12 +265,28 @@
             android:layout_weight="0.25"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/answersHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="370dp"
+        android:fontFamily="@font/roboto"
+        android:text="All questions need to be answered"
+        android:textColor="@color/colorRed"
+        android:textSize="11sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
-        android:id="@+id/ScreenTimeHistory"
+        android:id="@+id/submitScreenTimeAnswers"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/submit_button_inactive"
+        android:background="@drawable/submit_button_active"
         android:text="submit answers"
         android:textColor="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="parent"
