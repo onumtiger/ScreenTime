@@ -20,7 +20,7 @@ import kotlin.collections.HashMap
 import com.google.firebase.firestore.auth.User
 
 
-// TODO 22.09 group b + screentime calculation + checkfirebase entries when empty?? new date??
+// TODO 28.09 checkfirebase entries when empty?? new date?? + notification + nomeasure activities add screentime to firebase + questionnaires
 
 
 class MainActivity : AppCompatActivity() {
@@ -202,7 +202,7 @@ class MainActivity : AppCompatActivity() {
         val evaluatedResult: Boolean = lastScreenTimeEntry["evaluated"] as Boolean
 
         if (answeredQuestionnaire) {
-            checkEvaluation(evaluatedResult)
+            checkEvaluation(evaluatedResult, currentParticipantID, currentDate)
         }
         else {
             val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
-    private fun checkEvaluation(evaluatedResult: Boolean){
+    private fun checkEvaluation(evaluatedResult: Boolean, currentParticipantID: String, currentDate: String){
         var intent: Intent
         if (evaluatedResult) {
             intent = Intent(this, screenTimeQuestionnaireActivity::class.java)
@@ -220,6 +220,8 @@ class MainActivity : AppCompatActivity() {
         else {
             intent = Intent(this, screenTimeQuestionnaireEvaluationActivity::class.java)
         }
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("currentParticipantID", currentParticipantID)
         startActivity(intent)
         finish()
     }

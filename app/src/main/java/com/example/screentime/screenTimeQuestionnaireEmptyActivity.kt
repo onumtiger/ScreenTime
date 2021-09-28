@@ -16,6 +16,16 @@ import android.text.TextWatcher
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONArray
+import org.json.JSONObject
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
@@ -50,10 +60,13 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
 
         val inputProductiveHours : EditText = findViewById(R.id.EnterProductiveTimeInputHours)
         val inputProductiveMinutes : EditText = findViewById(R.id.EnterProductiveTimeInputMinutes)
+        var hoursProductive: String = inputProductiveHours.text.toString()
+        var minutesProductive: String = inputProductiveMinutes.text.toString()
 
         val answersHint: TextView = findViewById(R.id.answersHint)
         val submitButton = findViewById<Button>(R.id.submitScreenTimeAnswers)
-        var screenTimeEntriesSize = "0"
+        var screenTimeEntriesList = emptyMap<Any, Any>().toMutableMap()
+        var apiScreenTimeInfo = emptyMap<String, String>().toMutableMap()
 
         // get user from firebase
         dbParticipants.whereEqualTo("studyID", userId).get().addOnSuccessListener { snapshots ->
@@ -63,9 +76,33 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
                 finish()
             }
 
+            Log.d("snapshot", snapshots.toString())
             val currentParticipant = snapshots.documents[0]
-            val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
-            screenTimeEntriesSize = (1 + screenTimeEntriesList.size).toString()
+            screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <Any, Any>
+            val apiKey = currentParticipant.data?.get("apiKey") as String
+            var productivePulse = 0
+            var allProductiveDuration = ""
+            var totalDuration = ""
+
+            runBlocking {
+                val job: Job = launch(context = Dispatchers.Default) {
+                    val client: OkHttpClient = OkHttpClient()
+                    val request: Request =
+                        Request.Builder().url("https://www.rescuetime.com/anapi/daily_summary_feed?key=$apiKey")
+                            .build()
+                    val apiResponse = client.newCall(request).execute()
+                    val apiResponseString: String = apiResponse.body!!.string()
+                    val apiResponseJSONAarray = JSONArray(apiResponseString)
+                    val apiResponseJSON = JSONObject(apiResponseJSONAarray[0].toString())
+
+                    productivePulse = apiResponseJSON["productivity_pulse"] as Int
+                    allProductiveDuration = apiResponseJSON["all_productive_duration_formatted"] as String
+                    totalDuration = apiResponseJSON["total_duration_formatted"] as String
+                    apiScreenTimeInfo = cleanScreenData(productivePulse, allProductiveDuration, totalDuration)
+                }
+
+                job.join()
+            }
         }
 
         inputHoursSpend.addTextChangedListener(object : TextWatcher {
@@ -84,6 +121,14 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
                 // TODO Auto-generated method stub
                 hoursSpend = s.toString()
                 productiveTimeQuestiontView.text = "You answered you spend ${hoursSpend}h and ${minutesSpend}min on your phone. \nHow much of that time have you been productive for?"
+                activateSubmitButton(
+                    inputProductiveHours.text.toString(),
+                    inputProductiveMinutes.text.toString(),
+                    inputHoursSpend.text.toString(),
+                    inputMinutesSpend.text.toString(),
+                    productivityScore,
+                    submitButton
+                )
             }
         })
 
@@ -103,33 +148,98 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
                 // TODO Auto-generated method stub
                 minutesSpend = s.toString()
                 productiveTimeQuestiontView.text = "You answered you spend ${hoursSpend}h and ${minutesSpend}min on your phone. \nHow much of that time have you been productive for?"
+                activateSubmitButton(
+                    inputProductiveHours.text.toString(),
+                    inputProductiveMinutes.text.toString(),
+                    inputHoursSpend.text.toString(),
+                    inputMinutesSpend.text.toString(),
+                    productivityScore,
+                    submitButton
+                )
+            }
+        })
+
+        inputProductiveHours.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                // TODO Auto-generated method stub
+            }
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int, count: Int,
+                after: Int
+            ) {
+                // TODO Auto-generated method stub
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                // TODO Auto-generated method stub
+                activateSubmitButton(
+                    inputProductiveHours.text.toString(),
+                    inputProductiveMinutes.text.toString(),
+                    inputHoursSpend.text.toString(),
+                    inputMinutesSpend.text.toString(),
+                    productivityScore,
+                    submitButton
+                )
+            }
+        })
+
+        inputProductiveMinutes.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                // TODO Auto-generated method stub
+            }
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int, count: Int,
+                after: Int
+            ) {
+                // TODO Auto-generated method stub
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                // TODO Auto-generated method stub
+                activateSubmitButton(
+                    inputProductiveHours.text.toString(),
+                    inputProductiveMinutes.text.toString(),
+                    inputHoursSpend.text.toString(),
+                    inputMinutesSpend.text.toString(),
+                    productivityScore,
+                    submitButton
+                )
             }
         })
 
         submitButton.setOnClickListener{
-            val hoursProductive: String = inputProductiveHours.text.toString()
-            val minutesProductive: String = inputProductiveMinutes.text.toString()
+            hoursProductive = inputProductiveHours.text.toString()
+            minutesProductive = inputProductiveMinutes.text.toString()
+            hoursSpend = inputHoursSpend.text.toString()
+            minutesSpend = inputMinutesSpend.text.toString()
+
             if(hoursSpend.isEmpty() || minutesSpend.isEmpty() || hoursProductive.isEmpty() || minutesProductive.isEmpty() || productivityScore.isEmpty()){
                 answersHint.visibility = View.VISIBLE
             }
             else {
-                // TODO save answers – launch next activity
-                    val updateMap = mutableMapOf(
-                screenTimeEntriesSize to mutableMapOf(
-                    "answered" to false,
+                val updateMap =  mutableMapOf(
+                    "answered" to true,
                     "date" to currentDate,
                     "evaluated" to false,
-                    "productiveTime" to "",
+                    "productiveTime" to apiScreenTimeInfo["productiveTime"],
                     "qAProductiveTime" to "$hoursProductive h $minutesProductive min",
                     "qAScore" to productivityScore,
                     "qATimeSpend" to "$hoursSpend h $minutesSpend min",
-                    "score" to "",
-                    "timeSpend" to ""
+                    "score" to apiScreenTimeInfo["score"],
+                    "timeSpend" to apiScreenTimeInfo["timeSpend"],
+                    "group" to "b"
                 )
-                    )
 
-                // update entry or add new value
-                this.dbParticipants.document(userId).collection("screenTimeEntries").add(updateMap)
+                val entryPosition = 1 + screenTimeEntriesList.size
+                screenTimeEntriesList["$entryPosition"] = updateMap
+                this.dbParticipants.document(userId).update("screenTimeEntries", screenTimeEntriesList)
+
+                val intent = Intent(this, screenTimeQuestionnaireEvaluationActivity::class.java)
+                intent.putExtra("currentParticipantID", userId)
+                intent.putExtra("currentDate", currentDate)
+                startActivity(intent)
             }
         }
 
@@ -142,6 +252,15 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             scoreButtonF.setTextColor(resources.getColor(R.color.colorGrey))
 
             productivityScore = "a"
+
+            activateSubmitButton(
+                inputProductiveHours.text.toString(),
+                inputProductiveMinutes.text.toString(),
+                inputHoursSpend.text.toString(),
+                inputMinutesSpend.text.toString(),
+                productivityScore,
+                submitButton
+            )
         }
 
         scoreButtonB.setOnClickListener{
@@ -153,6 +272,15 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             scoreButtonF.setTextColor(resources.getColor(R.color.colorGrey))
 
             productivityScore = "b"
+
+            activateSubmitButton(
+                inputProductiveHours.text.toString(),
+                inputProductiveMinutes.text.toString(),
+                inputHoursSpend.text.toString(),
+                inputMinutesSpend.text.toString(),
+                productivityScore,
+                submitButton
+            )
         }
 
         scoreButtonC.setOnClickListener{
@@ -164,6 +292,15 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             scoreButtonF.setTextColor(resources.getColor(R.color.colorGrey))
 
             productivityScore = "c"
+
+            activateSubmitButton(
+                inputProductiveHours.text.toString(),
+                inputProductiveMinutes.text.toString(),
+                inputHoursSpend.text.toString(),
+                inputMinutesSpend.text.toString(),
+                productivityScore,
+                submitButton
+            )
         }
 
         scoreButtonD.setOnClickListener{
@@ -175,6 +312,15 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             scoreButtonF.setTextColor(resources.getColor(R.color.colorGrey))
 
             productivityScore = "d"
+
+            activateSubmitButton(
+                inputProductiveHours.text.toString(),
+                inputProductiveMinutes.text.toString(),
+                inputHoursSpend.text.toString(),
+                inputMinutesSpend.text.toString(),
+                productivityScore,
+                submitButton
+            )
         }
 
         scoreButtonE.setOnClickListener{
@@ -186,6 +332,15 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             scoreButtonF.setTextColor(resources.getColor(R.color.colorGrey))
 
             productivityScore = "e"
+
+            activateSubmitButton(
+                inputProductiveHours.text.toString(),
+                inputProductiveMinutes.text.toString(),
+                inputHoursSpend.text.toString(),
+                inputMinutesSpend.text.toString(),
+                productivityScore,
+                submitButton
+            )
         }
 
         scoreButtonF.setOnClickListener{
@@ -197,7 +352,46 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             scoreButtonF.setTextColor(resources.getColor(R.color.colorRed))
 
             productivityScore = "f"
+
+            activateSubmitButton(
+                inputProductiveHours.text.toString(),
+                inputProductiveMinutes.text.toString(),
+                inputHoursSpend.text.toString(),
+                inputMinutesSpend.text.toString(),
+                productivityScore,
+                submitButton
+            )
+        }
+    }
+
+    fun activateSubmitButton(hoursProductive: String, minutesProductive: String, hoursSpend: String, minutesSpend: String, productivityScore: String, submitButton: Button){
+
+        if(hoursSpend.isNotEmpty() && minutesSpend.isNotEmpty() && hoursProductive.isNotEmpty() && minutesProductive.isNotEmpty() && productivityScore.isNotEmpty()){
+            submitButton.setBackgroundColor(resources.getColor(R.color.colorGreen))
+            submitButton.setTextColor(resources.getColor(R.color.colorWhite))
+            submitButton.isEnabled = true
+            submitButton.isClickable = true
+        }
+    }
+
+    fun cleanScreenData(productivePulse: Int, allProductiveDuration: String, totalDuration: String): MutableMap<String, String> {
+        var score: String = ""
+        when (true) {
+            productivePulse <= 17 -> score = "f"
+            productivePulse <= 33 -> score = "e"
+            productivePulse <= 50 -> score = "d"
+            productivePulse <= 69 -> score = "c"
+            productivePulse <= 84 -> score = "b"
+            productivePulse <= 100 -> score = "a"
         }
 
+        val productiveTime = allProductiveDuration.substringBefore("m") + "min"
+        val timeSpend = totalDuration.substringBefore("m") + "min"
+
+        return mutableMapOf(
+            "score" to score,
+            "productiveTime" to productiveTime,
+            "timeSpend" to timeSpend
+        )
     }
 }

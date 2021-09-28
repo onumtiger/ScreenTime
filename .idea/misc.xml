@@ -15,9 +15,9 @@
         <entry key="app/src/main/res/layout/screentime_history_entry_score.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_history_list.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_questionnaire.xml" value="0.32395833333333335" />
-        <entry key="app/src/main/res/layout/screentime_questionnaire_empty.xml" value="0.41104878155657926" />
+        <entry key="app/src/main/res/layout/screentime_questionnaire_empty.xml" value="0.28703703703703703" />
         <entry key="app/src/main/res/layout/screentime_questionnaire_evaluation.xml" value="0.18697916666666667" />
-        <entry key="app/src/main/res/layout/screentime_score.xml" value="0.428125" />
+        <entry key="app/src/main/res/layout/screentime_score.xml" value="0.37150503921568406" />
       </map>
     </option>
   </component>

@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/infoText"
+        android:id="@+id/scoreInfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -69,11 +69,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="A"
             android:background="@null"
+            android:text="A"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp"
-            />
+            android:textColorHint="@android:color/transparent"
+            android:textColorLink="@android:color/transparent"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/productivityScoreButtonB"
@@ -92,7 +93,7 @@
             android:layout_weight="0.5"
             android:text="C"
             android:background="@null"
-            android:textColor="@color/colorOrange"
+            android:textColor="@color/colorGrey"
             android:textSize="30sp" />
 
         <Button
@@ -142,7 +143,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/EnterGeneralTimeList"
+        android:id="@+id/enterGeneralTimeList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -155,7 +156,7 @@
         >
 
         <TextView
-            android:id="@+id/GeneralTimeSpend"
+            android:id="@+id/generalTimeSpend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -199,7 +200,7 @@
         >
 
         <TextView
-            android:id="@+id/ProductiveTime"
+            android:id="@+id/productiveTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -242,7 +243,7 @@
         >
 
         <Button
-            android:id="@+id/SatisfactionButtonYes"
+            android:id="@+id/satisfactionButtonYes"
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:layout_marginBottom="50dp"
@@ -254,7 +255,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/SatisfactionButtonNo"
+            android:id="@+id/satisfactionButtonNo"
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:layout_marginBottom="50dp"

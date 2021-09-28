@@ -286,7 +286,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/submit_button_active"
+        android:background="@drawable/submit_button_inactive"
         android:text="submit answers"
         android:textColor="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="parent"
