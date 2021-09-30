@@ -1,27 +1,31 @@
 <resources>
     <string name="app_name">ScreenTime</string>
-    <string name="questionOne">Question 1</string>
-    <string name="questionOneAnswerOne">Answer 1</string>
-    <string name="questionOneAnswerTwo">Answer 2</string>
-    <string name="questionOneAnswerThree">Answer 3</string>
+    <string name="questionOne">Missing planned work due to smartphone use?</string>
+    <string name="questionTwo">Having a hard time concentrating in class, while doing assignments, or while working due to smartphone use?</string>
+    <string name="questionThree">Feeling pain in the wrists or at the back of the neck while using a smartphone?</string>
+    <string name="questionFour">Won\'t be able to stand not having a smartphone?</string>
+    <string name="questionFive">Feeling impatient and fretful when I am not holding my smartphone?</string>
+    <string name="questionSix">Having my smartphone in my mind even when I am not using it?</string>
+    <string name="questionSeven">I will never give up using my smartphone even when my daily life is already greatly affected by?</string>
+    <string name="questionEight">Constantly checking my smartphone so as not to miss conversations between other people onTwitter or Facebook?</string>
+    <string name="questionNine">Using my smartphone longer than I had intended?</string>
+    <string name="questionTen">The people around me tell me that I use my smartphone too much?</string>
 
-    <string name="questionTwo">Question 2</string>
-    <string name="questionTwoAnswerOne">Answer 1</string>
-    <string name="questionTwoAnswerTwo">Answer 2</string>
-    <string name="questionTwoAnswerThree">Answer 3</string>
+    <string name="stronglyDisagree">Strongly\nDisagree</string>
+    <string name="disagree">Disagree</string>
+    <string name="slightlyDisagree">Slightly\nDisagree</string>
+    <string name="slightlyAgree">Slightly\nAgree</string>
+    <string name="agree">Agree</string>
+    <string name="stronglyAgree">Strongly\nAgree</string>
 
-    <string name="questionThree">Question 3</string>
-    <string name="questionThreeAnswerOne">Answer 1</string>
-    <string name="questionThreeAnswerTwo">Answer 2</string>
-    <string name="questionThreeAnswerThree">Answer 3</string>
-
-    <string name="questionFour">Question 4</string>
-    <string name="questionFourAnswerOne">Answer 1</string>
-    <string name="questionFourAnswerTwo">Answer 2</string>
-    <string name="questionFourAnswerThree">Answer 3</string>
-
-    <string name="questionFive">Question 5</string>
-    <string name="questionFiveAnswerOne">Answer 1</string>
-    <string name="questionFiveAnswerTwo">Answer 2</string>
-    <string name="questionFiveAnswerThree">Answer 3</string>
 </resources>
+
+
+
+
+
+
+
+
+
+

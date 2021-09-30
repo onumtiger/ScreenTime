@@ -20,7 +20,7 @@ import kotlin.collections.HashMap
 import com.google.firebase.firestore.auth.User
 
 
-// TODO 28.09 checkfirebase entries when empty?? new date?? + notification + nomeasure activities add screentime to firebase + questionnaires
+// TODO 28.09 checkfirebase entries when empty?? new date?? + notification + add day to screentime
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,17 +50,20 @@ class MainActivity : AppCompatActivity() {
                     Log.d("snapshots", snapshots.toString())
                     val currentParticipant = snapshots.documents[0]
                     val currentParticipantID = currentParticipant.get("studyID").toString()
+                    val startDate = currentParticipant.getString("startDate")!!
+                    val group = currentParticipant.getString("group")!!
+
                     checkGroup(currentParticipant, currentParticipantID, currentDate)
                     when (checkQOneAnswered(currentParticipant)) {
                         true -> {
-                            when (checkStudyPhase(currentParticipant, currentDate)) {
-                                "noMeasuresOne" -> launchNoMeasuresOne(currentDate, currentParticipant.getString("startDate")!!)
+                            when (checkStudyPhase(currentParticipant, currentDate, startDate)) {
+                                "noMeasuresOne" -> launchNoMeasuresOne(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
                                 "measuresOne" -> {
                                     checkGroup(currentParticipant, currentParticipantID, currentDate)
                                 }
                                 "measuresTwo" -> {
                                     when (checkQTwoAnswered(currentParticipant)) {
-                                        false -> launchQTwo(currentParticipantID)
+                                        false -> launchQTwo(currentParticipantID, currentDate, group)
                                         true -> {
                                             checkGroup(currentParticipant, currentParticipantID, currentDate)
                                         }
@@ -68,29 +71,29 @@ class MainActivity : AppCompatActivity() {
                                 }
                                 "noMeasuresTwo" -> {
                                     when (checkQTwoAnswered(currentParticipant)){
-                                        false -> launchQTwo(currentParticipantID)
+                                        false -> launchQTwo(currentParticipantID, currentDate, group)
                                         true -> {
                                             when (checkQThreeAnswered(currentParticipant)) {
-                                                false -> launchQThree(currentParticipantID)
-                                                true -> launchNoMeasuresTwo(currentDate, currentParticipant.getString("startDate")!!)
+                                                false -> launchQThree(currentParticipantID, currentDate, startDate)
+                                                true -> launchNoMeasuresTwo(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
                                             }
                                         }
                                     }
                                 }
                                 "studyIsFinished" -> {
                                     when (checkQTwoAnswered(currentParticipant)){
-                                        false -> launchQTwo(currentParticipantID)
+                                        false -> launchQTwo(currentParticipantID, currentDate, group)
                                         true -> {
                                             when (checkQThreeAnswered(currentParticipant)) {
-                                                false -> launchQThree(currentParticipantID)
-                                                true -> launchNoMeasuresTwo(currentDate, currentParticipant.getString("startDate")!!)
+                                                false -> launchQThree(currentParticipantID, currentDate, startDate)
+                                                true -> launchNoMeasuresTwo(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        false -> launchQOne(currentParticipantID)
+                        false -> launchQOne(currentParticipantID, currentDate, startDate )
                     }
                 }
                 else {
@@ -110,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         else {
                             addDevice(currentParticipantID, deviceId, currentDate, currentParticipantApiKey)
-                            launchQOne(currentParticipantID)
+                            launchQOne(currentParticipantID, currentDate, currentDate)
                         }
                     }
                 }
@@ -124,37 +127,45 @@ class MainActivity : AppCompatActivity() {
         this.dbParticipants.document(userId).update("apiKey", currentParticipantApiKey)
     }
 
-    private fun launchQOne(currentParticipantID: String) {
+    private fun launchQOne(currentParticipantID: String, currentDate: String, startDate: String) {
         val intent = Intent(this, qOneActivity::class.java)
         intent.putExtra("currentParticipantID", currentParticipantID)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun launchQTwo(currentParticipantID: String) {
-        val intent = Intent(this, qTwoActivity::class.java)
-        intent.putExtra("currentParticipantID", currentParticipantID)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun launchQThree(currentParticipantID: String) {
-        val intent = Intent(this, qThreeActivity::class.java)
-        intent.putExtra("currentParticipantID", currentParticipantID)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun launchNoMeasuresOne(currentDate: String, startDate: String){
-        val intent = Intent(this, noMeasuresOneActivity::class.java)
         intent.putExtra("currentDate", currentDate)
         intent.putExtra("startDate", startDate)
         startActivity(intent)
         finish()
     }
 
-    private fun launchNoMeasuresTwo(currentDate: String, startDate: String){
+    private fun launchQTwo(currentParticipantID: String, currentDate: String, group: String) {
+        val intent = Intent(this, qTwoActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("group", group)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun launchQThree(currentParticipantID: String, currentDate: String, startDate: String) {
+        val intent = Intent(this, qThreeActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("startDate", startDate)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun launchNoMeasuresOne(currentParticipantID: String, currentDate: String, startDate: String){
+        val intent = Intent(this, noMeasuresOneActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("startDate", startDate)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun launchNoMeasuresTwo(currentParticipantID: String, currentDate: String, startDate: String){
         val intent = Intent(this, noMeasuresTwoActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
         intent.putExtra("currentDate", currentDate)
         intent.putExtra("startDate", startDate)
         startActivity(intent)
@@ -226,8 +237,7 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun checkStudyPhase(currentParticipant: DocumentSnapshot, currentDate: String): String{
-        val startDate = currentParticipant.getString("startDate")
+    private fun checkStudyPhase(currentParticipant: DocumentSnapshot, currentDate: String, startDate: String): String{
         Log.d("startDate", startDate)
         Log.d("currentDate", currentDate)
         val startDay = startDate!!.substringBefore(".")
