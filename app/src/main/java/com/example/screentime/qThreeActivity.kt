@@ -42,7 +42,7 @@ class qThreeActivity: AppCompatActivity() {
                 dbParticipants.document("$userId").update("qThreeAnswers", questionnairesAnsweres)
                 dbParticipants.document("$userId").update("qThree", true)
 
-                launchNoMeasuresOne(userId, currentDate, startDate)
+                launchNoMeasuresTwo(currentDate, startDate)
             }
             else{
                 submitQThreeHintView.visibility = View.VISIBLE
@@ -50,17 +50,10 @@ class qThreeActivity: AppCompatActivity() {
         }
     }
 
-    private fun launchNoMeasuresOne(currentParticipantID: String, currentDate: String, startDate: String){
-        val intent = Intent(this, noMeasuresOneActivity::class.java)
-        intent.putExtra("currentParticipantID", currentParticipantID)
+    private fun launchNoMeasuresTwo(currentDate: String, startDate: String){
+        val intent = Intent(this, noMeasuresTwoActivity::class.java)
         intent.putExtra("currentDate", currentDate)
         intent.putExtra("startDate", startDate)
-        startActivity(intent)
-        finish()
-    }
-
-    fun startMainActivity(){
-        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

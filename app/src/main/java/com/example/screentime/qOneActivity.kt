@@ -67,12 +67,6 @@ class qOneActivity: AppCompatActivity() {
         finish()
     }
 
-    fun startMainActivity(){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
     fun activateSubmitButton(){
         this.questionnairesAnsweres = mutableMapOf(
             "1" to this.questionOneAnswer,

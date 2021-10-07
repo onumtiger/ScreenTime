@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.screentime_questionnaire_empty.*
 import android.text.Editable
 
 import android.text.TextWatcher
+import android.widget.Toast
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -60,49 +61,23 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
 
         val inputProductiveHours : EditText = findViewById(R.id.EnterProductiveTimeInputHours)
         val inputProductiveMinutes : EditText = findViewById(R.id.EnterProductiveTimeInputMinutes)
-        var hoursProductive: String = inputProductiveHours.text.toString()
-        var minutesProductive: String = inputProductiveMinutes.text.toString()
+        var hoursProductive: String
+        var minutesProductive: String
 
         val answersHint: TextView = findViewById(R.id.answersHint)
         val submitButton = findViewById<Button>(R.id.submitScreenTimeAnswers)
         var screenTimeEntriesList = emptyMap<Any, Any>().toMutableMap()
-        var apiScreenTimeInfo = emptyMap<String, String>().toMutableMap()
+        var lastScreenTimeEntry = emptyMap<Any, Any>().toMutableMap()
 
         // get user from firebase
-        dbParticipants.whereEqualTo("studyID", userId).get().addOnSuccessListener { snapshots ->
-            if (snapshots.documents.isEmpty()){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+        dbParticipants.document(userId).get().addOnSuccessListener { currentParticipant ->
+            if (currentParticipant.data?.isNullOrEmpty() == true){
+                Toast.makeText(this, "Error! Please contact the study supervisor!",
+                    Toast.LENGTH_LONG).show();
             }
 
-            Log.d("snapshot", snapshots.toString())
-            val currentParticipant = snapshots.documents[0]
             screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <Any, Any>
-            val apiKey = currentParticipant.data?.get("apiKey") as String
-            var productivePulse = 0
-            var allProductiveDuration = ""
-            var totalDuration = ""
-
-            runBlocking {
-                val job: Job = launch(context = Dispatchers.Default) {
-                    val client: OkHttpClient = OkHttpClient()
-                    val request: Request =
-                        Request.Builder().url("https://www.rescuetime.com/anapi/daily_summary_feed?key=$apiKey")
-                            .build()
-                    val apiResponse = client.newCall(request).execute()
-                    val apiResponseString: String = apiResponse.body!!.string()
-                    val apiResponseJSONAarray = JSONArray(apiResponseString)
-                    val apiResponseJSON = JSONObject(apiResponseJSONAarray[0].toString())
-
-                    productivePulse = apiResponseJSON["productivity_pulse"] as Int
-                    allProductiveDuration = apiResponseJSON["all_productive_duration_formatted"] as String
-                    totalDuration = apiResponseJSON["total_duration_formatted"] as String
-                    apiScreenTimeInfo = cleanScreenData(productivePulse, allProductiveDuration, totalDuration)
-                }
-
-                job.join()
-            }
+            lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap <Any, Any>
         }
 
         inputHoursSpend.addTextChangedListener(object : TextWatcher {
@@ -219,20 +194,14 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
                 answersHint.visibility = View.VISIBLE
             }
             else {
-                val updateMap =  mutableMapOf(
-                    "answered" to true,
-                    "date" to currentDate,
-                    "evaluated" to false,
-                    "productiveTime" to apiScreenTimeInfo["productiveTime"],
-                    "qAProductiveTime" to "$hoursProductive h $minutesProductive min",
-                    "qAScore" to productivityScore,
-                    "qATimeSpend" to "$hoursSpend h $minutesSpend min",
-                    "score" to apiScreenTimeInfo["score"],
-                    "timeSpend" to apiScreenTimeInfo["timeSpend"],
-                    "group" to "b"
-                )
 
-                val entryPosition = 1 + screenTimeEntriesList.size
+                val updateMap =  lastScreenTimeEntry
+                updateMap["answered"] = true
+                updateMap["qAProductiveTime"] = "${hoursProductive}h ${minutesProductive}min"
+                updateMap["qAScore"] = productivityScore
+                updateMap["qATimeSpend"] = "${hoursSpend}h ${minutesSpend}min"
+
+                val entryPosition = screenTimeEntriesList.size
                 screenTimeEntriesList["$entryPosition"] = updateMap
                 this.dbParticipants.document(userId).update("screenTimeEntries", screenTimeEntriesList)
 
@@ -364,34 +333,12 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
         }
     }
 
-    fun activateSubmitButton(hoursProductive: String, minutesProductive: String, hoursSpend: String, minutesSpend: String, productivityScore: String, submitButton: Button){
-
+    private fun activateSubmitButton(hoursProductive: String, minutesProductive: String, hoursSpend: String, minutesSpend: String, productivityScore: String, submitButton: Button){
         if(hoursSpend.isNotEmpty() && minutesSpend.isNotEmpty() && hoursProductive.isNotEmpty() && minutesProductive.isNotEmpty() && productivityScore.isNotEmpty()){
             submitButton.setBackgroundColor(resources.getColor(R.color.colorGreen))
             submitButton.setTextColor(resources.getColor(R.color.colorWhite))
             submitButton.isEnabled = true
             submitButton.isClickable = true
         }
-    }
-
-    fun cleanScreenData(productivePulse: Int, allProductiveDuration: String, totalDuration: String): MutableMap<String, String> {
-        var score: String = ""
-        when (true) {
-            productivePulse <= 17 -> score = "f"
-            productivePulse <= 33 -> score = "e"
-            productivePulse <= 50 -> score = "d"
-            productivePulse <= 69 -> score = "c"
-            productivePulse <= 84 -> score = "b"
-            productivePulse <= 100 -> score = "a"
-        }
-
-        val productiveTime = allProductiveDuration.substringBefore("m") + "min"
-        val timeSpend = totalDuration.substringBefore("m") + "min"
-
-        return mutableMapOf(
-            "score" to score,
-            "productiveTime" to productiveTime,
-            "timeSpend" to timeSpend
-        )
     }
 }

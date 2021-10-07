@@ -17,11 +17,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
-import com.google.firebase.firestore.auth.User
-
-
-// TODO 28.09 checkfirebase entries when empty?? new date?? + notification + add day to screentime
-
+import android.content.ContentValues.TAG
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
@@ -32,11 +30,23 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         Log.d("AppCompatActivity", "AppCompatActivity")
 
-        // firebase
+        // firebase collection
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
 
         // get device ID
         val deviceId: String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+
+        // get FCM token
+        var token = ""
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            token = task.result.toString()
+        })
 
         // calculate current Date
         val sdf = SimpleDateFormat("dd.M")
@@ -47,17 +57,21 @@ class MainActivity : AppCompatActivity() {
             .whereEqualTo("deviceId", deviceId)
             .get().addOnSuccessListener { snapshots ->
                 if (snapshots.documents.isNotEmpty()) {
-                    Log.d("snapshots", snapshots.toString())
                     val currentParticipant = snapshots.documents[0]
                     val currentParticipantID = currentParticipant.get("studyID").toString()
                     val startDate = currentParticipant.getString("startDate")!!
                     val group = currentParticipant.getString("group")!!
 
+                    // update token to make sure it is always up to date
+                    this.dbParticipants.document(currentParticipantID).update("token", token)
+
                     checkGroup(currentParticipant, currentParticipantID, currentDate)
                     when (checkQOneAnswered(currentParticipant)) {
                         true -> {
-                            when (checkStudyPhase(currentParticipant, currentDate, startDate)) {
-                                "noMeasuresOne" -> launchNoMeasuresOne(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
+                            when (checkStudyPhase(currentDate, startDate)) {
+                                "noMeasuresOne" -> {
+                                    launchNoMeasuresOne(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
+                                }
                                 "measuresOne" -> {
                                     checkGroup(currentParticipant, currentParticipantID, currentDate)
                                 }
@@ -112,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                             inputHintView.visibility = View.VISIBLE
                         }
                         else {
-                            addDevice(currentParticipantID, deviceId, currentDate, currentParticipantApiKey)
+                            addDevice(currentParticipantID, deviceId, currentDate, currentParticipantApiKey, token)
                             launchQOne(currentParticipantID, currentDate, currentDate)
                         }
                     }
@@ -120,11 +134,12 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun addDevice(userId: String, deviceId: String, currentDate: String, currentParticipantApiKey:String) {
+    private fun addDevice(userId: String, deviceId: String, currentDate: String, currentParticipantApiKey:String, token: String) {
         Log.d("firebase", "add device")
         this.dbParticipants.document(userId).update("deviceId", deviceId)
         this.dbParticipants.document(userId).update("startDate", currentDate)
         this.dbParticipants.document(userId).update("apiKey", currentParticipantApiKey)
+        this.dbParticipants.document(userId).update("token", token)
     }
 
     private fun launchQOne(currentParticipantID: String, currentDate: String, startDate: String) {
@@ -211,35 +226,25 @@ class MainActivity : AppCompatActivity() {
         val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
         val answeredQuestionnaire: Boolean = lastScreenTimeEntry["answered"] as Boolean
         val evaluatedResult: Boolean = lastScreenTimeEntry["evaluated"] as Boolean
-
-        if (answeredQuestionnaire) {
-            checkEvaluation(evaluatedResult, currentParticipantID, currentDate)
-        }
-        else {
-            val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
-            intent.putExtra("currentDate", currentDate)
-            intent.putExtra("currentParticipantID", currentParticipantID)
-            startActivity(intent)
-            finish()
-        }
-    }
-    private fun checkEvaluation(evaluatedResult: Boolean, currentParticipantID: String, currentDate: String){
         var intent: Intent
-        if (evaluatedResult) {
+
+        if (answeredQuestionnaire && evaluatedResult) {
             intent = Intent(this, screenTimeQuestionnaireActivity::class.java)
-        }
-        else {
+
+        } else if (answeredQuestionnaire && !evaluatedResult){
             intent = Intent(this, screenTimeQuestionnaireEvaluationActivity::class.java)
+        } else {
+            intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
         }
+
         intent.putExtra("currentDate", currentDate)
         intent.putExtra("currentParticipantID", currentParticipantID)
         startActivity(intent)
         finish()
     }
 
-    private fun checkStudyPhase(currentParticipant: DocumentSnapshot, currentDate: String, startDate: String): String{
-        Log.d("startDate", startDate)
-        Log.d("currentDate", currentDate)
+
+    private fun checkStudyPhase(currentDate: String, startDate: String): String{
         val startDay = startDate!!.substringBefore(".")
         val startMonth = startDate!!.substringAfter(".")
 
@@ -254,8 +259,6 @@ class MainActivity : AppCompatActivity() {
         else {
             difference = 30 - startDay.toInt() + currentDay.toInt()
         }
-
-        Log.d("difference", difference.toString())
 
         return when {
             difference >= 28 -> "studyIsFinished"

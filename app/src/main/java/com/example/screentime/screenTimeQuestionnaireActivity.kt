@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
@@ -45,68 +46,37 @@ class screenTimeQuestionnaireActivity: AppCompatActivity() {
         val satisfactionButtonYes = findViewById<Button>(R.id.satisfactionButtonYes)
         val satisfactionButtonNo = findViewById<Button>(R.id.satisfactionButtonNo)
 
-        var screenTimeEntriesList = emptyMap<Any, Any>().toMutableMap()
-        var currentParticipant: DocumentSnapshot
-        var screenTimeInfo = emptyMap<String, String>().toMutableMap()
-
 
         // get user from firebase
-        dbParticipants.whereEqualTo("studyID", userId).get().addOnSuccessListener { snapshots ->
-            if (snapshots.documents.isEmpty()){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+        dbParticipants.document(userId).get().addOnSuccessListener { currentParticipant ->
+            if (currentParticipant.data?.isNullOrEmpty() == true){
+                Toast.makeText(this, "Error! Please contact the study supervisor!",
+                    Toast.LENGTH_LONG).show();
             }
 
-            currentParticipant = snapshots.documents[0]
-            screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <Any, Any>
-            screenTimeInfo = getScreenTimeEntry(currentParticipant)
-            if (screenTimeInfo["date"] != currentDate){
-                val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
-                intent.putExtra("currentParticipantID", userId)
-                intent.putExtra("currentDate", currentDate)
-                startActivity(intent)
-                finish()
-            }
+            val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
+            val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
 
             dateView.text = "${currentDate}.21"
-            scoreInfoText.text = "You rated your productivity with an ${screenTimeInfo["scoreInfoText"]}. \nActually your productivity score is: "
-            generalTimeQuestion.text = "You said you spend ${screenTimeInfo["qATimeSpend"]} on your phone. \nActually you spend on your phone:"
-            generalTimeSpend.text = screenTimeInfo["timeSpend"]
-            productiveTimeQuestion.text = "You said you’ve been productive for ${screenTimeInfo["qAProductiveTime"]}. \nActually you’ve been less productive."
-            productiveTime.text = screenTimeInfo["productiveTime"]
+            scoreInfoText.text = "You rated your productivity with an ${lastScreenTimeEntry["score"]}. \nActually your productivity score is: "
+            generalTimeQuestion.text = "You said you spend ${lastScreenTimeEntry["qATimeSpend"]} on your phone. \nActually you spend on your phone:"
+            generalTimeSpend.text = lastScreenTimeEntry["timeSpend"].toString()
+            productiveTimeQuestion.text = "You said you’ve been productive for ${lastScreenTimeEntry["qAProductiveTime"]}. \nActually you’ve been less productive."
+            productiveTime.text = lastScreenTimeEntry["productiveTime"].toString()
 
             when (true){
-                screenTimeInfo["score"] == "a" -> scoreButtonA.setTextColor(resources.getColor(R.color.colorGreen))
-                screenTimeInfo["score"] == "b" -> scoreButtonB.setTextColor(resources.getColor(R.color.colorGreen))
-                screenTimeInfo["score"] == "c" -> scoreButtonC.setTextColor(resources.getColor(R.color.colorOrange))
-                screenTimeInfo["score"] == "d" -> scoreButtonD.setTextColor(resources.getColor(R.color.colorOrange))
-                screenTimeInfo["score"] == "e" -> scoreButtonE.setTextColor(resources.getColor(R.color.colorRed))
-                screenTimeInfo["score"] == "f" -> scoreButtonF.setTextColor(resources.getColor(R.color.colorRed))
+                lastScreenTimeEntry["score"] == "a" -> scoreButtonA.setTextColor(resources.getColor(R.color.colorGreen))
+                lastScreenTimeEntry["score"] == "b" -> scoreButtonB.setTextColor(resources.getColor(R.color.colorGreen))
+                lastScreenTimeEntry["score"] == "c" -> scoreButtonC.setTextColor(resources.getColor(R.color.colorOrange))
+                lastScreenTimeEntry["score"] == "d" -> scoreButtonD.setTextColor(resources.getColor(R.color.colorOrange))
+                lastScreenTimeEntry["score"] == "e" -> scoreButtonE.setTextColor(resources.getColor(R.color.colorRed))
+                lastScreenTimeEntry["score"] == "f" -> scoreButtonF.setTextColor(resources.getColor(R.color.colorRed))
             }
 
             when (true) {
-                screenTimeInfo["evaluation"] == "no" -> satisfactionButtonYes.visibility = View.INVISIBLE
-                screenTimeInfo["evaluation"] == "yes" -> satisfactionButtonNo.visibility = View.INVISIBLE
+                lastScreenTimeEntry["evaluation"] == "no" -> satisfactionButtonYes.visibility = View.INVISIBLE
+                lastScreenTimeEntry["evaluation"] == "yes" -> satisfactionButtonNo.visibility = View.INVISIBLE
             }
         }
-
-
-    }
-
-    fun getScreenTimeEntry(currentParticipant: DocumentSnapshot): MutableMap<String, String>{
-        val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
-        val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
-
-        return mutableMapOf(
-            "timeSpend" to lastScreenTimeEntry["timeSpend"] as String,
-            "score" to lastScreenTimeEntry["score"] as String,
-            "productiveTime" to lastScreenTimeEntry["productiveTime"] as String,
-            "qAProductiveTime" to lastScreenTimeEntry["qAProductiveTime"] as String,
-            "qAScore" to lastScreenTimeEntry["qAScore"] as String,
-            "qATimeSpend" to lastScreenTimeEntry["qATimeSpend"] as String,
-            "evaluation" to lastScreenTimeEntry["evaluation"] as String,
-            "date" to lastScreenTimeEntry["date"] as String
-        )
     }
 }

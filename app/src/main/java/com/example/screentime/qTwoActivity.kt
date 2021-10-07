@@ -51,6 +51,7 @@ class qTwoActivity: AppCompatActivity() {
         }
     }
 
+    // change group to other user group
     private fun checkGroup(userId: String, group: String, currentDate: String) {
         when (group) {
             "a" -> {
