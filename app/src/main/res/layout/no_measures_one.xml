@@ -15,7 +15,7 @@
         android:layout_marginLeft="20dp"
         android:text="ScreenTime"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="17pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
@@ -26,15 +26,17 @@
         android:id="@+id/InfoText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
+        android:lineSpacingExtra="4sp"
+        android:text="Currently your ScreenTime behavior is measured. The actual study begins in a few days."
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="7pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Heading" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

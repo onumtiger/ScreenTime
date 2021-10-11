@@ -27,7 +27,7 @@
                 android:layout_marginTop="20dp"
                 android:text="ScreenTime"
                 android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textSize="17pt"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0."
@@ -40,9 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Please answer the last questionnaire on your screen time behaviour."
+                android:lineSpacingExtra="4sp"
+                android:text="Please answer the thrid and last questionnaire on your screen time behaviour."
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,13 +51,14 @@
 
             <TextView
                 android:id="@+id/questionOne"
-                android:layout_width="wrap_content"
+                android:layout_width="376dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
                 android:text="@string/questionOne"
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0."
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +81,7 @@
                     android:id="@+id/questionOneAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:layout_marginHorizontal="15dp"
                     android:onClick="questionOneClicked" />
@@ -88,7 +90,7 @@
                     android:id="@+id/questionOneAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:layout_marginHorizontal="15dp"
                     android:onClick="questionOneClicked" />
@@ -98,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
 
@@ -106,7 +108,7 @@
                     android:id="@+id/questionOneAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:layout_marginHorizontal="15dp"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
@@ -116,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
 
@@ -125,7 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
             </RadioGroup>
@@ -149,7 +151,7 @@
                     android:text="@string/stronglyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -159,7 +161,7 @@
                     android:text="@string/disagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -168,7 +170,7 @@
                     android:text="@string/slightlyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -177,7 +179,7 @@
                     android:text="@string/slightlyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -187,7 +189,7 @@
                     android:text="@string/agree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -196,7 +198,7 @@
                     android:text="@string/stronglyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
             </LinearLayout>
 
 
@@ -209,7 +211,8 @@
                 android:layout_marginEnd="20dp"
                 android:text="@string/questionTwo"
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
+                android:lineSpacingExtra="4sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
@@ -231,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
 
@@ -240,7 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
 
@@ -249,7 +252,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
 
@@ -258,7 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
 
@@ -267,7 +270,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
 
@@ -276,7 +279,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
             </RadioGroup>
@@ -300,7 +303,7 @@
                     android:text="@string/stronglyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -310,7 +313,7 @@
                     android:text="@string/disagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -319,7 +322,7 @@
                     android:text="@string/slightlyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -328,7 +331,7 @@
                     android:text="@string/slightlyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -338,7 +341,7 @@
                     android:text="@string/agree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -347,19 +350,20 @@
                     android:text="@string/stronglyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
             </LinearLayout>
 
 
             <TextView
                 android:id="@+id/questionThree"
-                android:layout_width="wrap_content"
+                android:layout_width="378dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
                 android:text="@string/questionThree"
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0."
                 app:layout_constraintStart_toStartOf="parent"
@@ -382,7 +386,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
 
@@ -391,7 +395,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
 
@@ -400,7 +404,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
 
@@ -409,7 +413,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
 
@@ -418,7 +422,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
 
@@ -427,7 +431,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
             </RadioGroup>
@@ -451,7 +455,7 @@
                     android:text="@string/stronglyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -461,7 +465,7 @@
                     android:text="@string/disagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -470,7 +474,7 @@
                     android:text="@string/slightlyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -479,7 +483,7 @@
                     android:text="@string/slightlyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -489,7 +493,7 @@
                     android:text="@string/agree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -498,19 +502,20 @@
                     android:text="@string/stronglyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
             </LinearLayout>
 
 
             <TextView
                 android:id="@+id/questionFour"
-                android:layout_width="wrap_content"
+                android:layout_width="379dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
                 android:text="@string/questionFour"
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0."
                 app:layout_constraintStart_toStartOf="parent"
@@ -532,7 +537,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
 
@@ -541,7 +546,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
 
@@ -550,7 +555,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
 
@@ -559,7 +564,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
 
@@ -568,7 +573,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
 
@@ -577,7 +582,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
             </RadioGroup>
@@ -601,7 +606,7 @@
                     android:text="@string/stronglyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -611,7 +616,7 @@
                     android:text="@string/disagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -620,7 +625,7 @@
                     android:text="@string/slightlyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -629,7 +634,7 @@
                     android:text="@string/slightlyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -639,7 +644,7 @@
                     android:text="@string/agree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -648,19 +653,20 @@
                     android:text="@string/stronglyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
             </LinearLayout>
 
 
             <TextView
                 android:id="@+id/questionFive"
-                android:layout_width="wrap_content"
+                android:layout_width="378dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
                 android:text="@string/questionFive"
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0."
                 app:layout_constraintStart_toStartOf="parent"
@@ -684,7 +690,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
 
@@ -693,7 +699,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
 
@@ -702,7 +708,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
 
@@ -711,7 +717,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
 
@@ -720,7 +726,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
 
@@ -729,7 +735,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
             </RadioGroup>
@@ -753,7 +759,7 @@
                     android:text="@string/stronglyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -763,7 +769,7 @@
                     android:text="@string/disagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -772,7 +778,7 @@
                     android:text="@string/slightlyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -781,7 +787,7 @@
                     android:text="@string/slightlyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -791,7 +797,7 @@
                     android:text="@string/agree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -800,18 +806,19 @@
                     android:text="@string/stronglyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/questionSix"
-                android:layout_width="wrap_content"
+                android:layout_width="374dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
                 android:text="@string/questionSix"
                 android:textColor="@color/colorBlack"
-                android:textSize="11sp"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0."
                 app:layout_constraintStart_toStartOf="parent"
@@ -835,7 +842,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
 
@@ -844,7 +851,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
 
@@ -853,7 +860,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
 
@@ -862,7 +869,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
 
@@ -871,7 +878,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
 
@@ -880,12 +887,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:buttonTint="@color/colorDarkGrey"
+                    android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
             </RadioGroup>
 
             <LinearLayout
+                android:id="@+id/lastAnswers"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -903,7 +911,7 @@
                     android:text="@string/stronglyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -913,7 +921,7 @@
                     android:text="@string/disagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -922,7 +930,7 @@
                     android:text="@string/slightlyDisagree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -931,7 +939,7 @@
                     android:text="@string/slightlyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -941,7 +949,7 @@
                     android:text="@string/agree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
 
                 <TextView
                     android:layout_width="61dp"
@@ -950,7 +958,7 @@
                     android:text="@string/stronglyAgree"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="11sp" />
+                    android:textSize="6pt" />
             </LinearLayout>
 
             <TextView
@@ -959,14 +967,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto"
                 android:text="All questions need to be answered."
                 android:textAlignment="center"
                 android:textColor="@color/colorRed"
-                android:textSize="11sp"
+                android:lineSpacingExtra="4sp"
+                android:textSize="8pt"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/SubmitQOne"
+                app:layout_constraintTop_toBottomOf="@+id/lastAnswers"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -974,12 +984,14 @@
                 android:id="@+id/SubmitQThree"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/submit_button_inactive"
                 android:text="submit answers"
+                android:textSize="12pt"
                 android:textColor="@color/colorGrey"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/SubmitQThreeHint"
                 app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
     </ScrollView>

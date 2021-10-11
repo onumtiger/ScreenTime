@@ -95,7 +95,7 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {
                 // TODO Auto-generated method stub
                 hoursSpend = s.toString()
-                productiveTimeQuestiontView.text = "You answered you spend ${hoursSpend}h and ${minutesSpend}min on your phone. \nHow much of that time have you been productive for?"
+                productiveTimeQuestiontView.text = "So you spend ${hoursSpend}h and ${minutesSpend}min on your phone."
                 activateSubmitButton(
                     inputProductiveHours.text.toString(),
                     inputProductiveMinutes.text.toString(),
@@ -122,7 +122,7 @@ class screenTimeQuestionnaireEmptyActivity: AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {
                 // TODO Auto-generated method stub
                 minutesSpend = s.toString()
-                productiveTimeQuestiontView.text = "You answered you spend ${hoursSpend}h and ${minutesSpend}min on your phone. \nHow much of that time have you been productive for?"
+                productiveTimeQuestiontView.text = "So you spend ${hoursSpend}h and ${minutesSpend}min on your phone."
                 activateSubmitButton(
                     inputProductiveHours.text.toString(),
                     inputProductiveMinutes.text.toString(),

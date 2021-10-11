@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:text="ScreenTime"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="17pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
@@ -26,28 +26,26 @@
         android:id="@+id/infoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
-        android:text="Rate your screentime from A (very productive) to F (not productive at all):"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Rate your screen time from A (very productive)\nto F (not productive at all):"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0."
+        android:textSize="8pt"
+        android:lineSpacingExtra="4sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
 
     <LinearLayout
         android:id="@+id/buttonList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/infoText">
 
         <Button
             android:id="@+id/productivityScoreButtonA"
@@ -59,57 +57,57 @@
             android:textColor="@color/colorGrey"
             android:textColorHint="@android:color/transparent"
             android:textColorLink="@android:color/transparent"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonB"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="B"
             android:background="@null"
+            android:text="B"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonC"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="C"
             android:background="@null"
+            android:text="C"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonD"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="D"
             android:background="@null"
+            android:text="D"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonE"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="E"
             android:background="@null"
+            android:text="E"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonF"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="F"
             android:background="@null"
+            android:text="F"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
     </LinearLayout>
 
@@ -118,74 +116,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="180dp"
-        android:text="How much time did you spend on your phone today?"
+        android:layout_marginTop="25dp"
+        android:text="Thinking about yesterday. How much time \ndid you spend on your phone?"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0."
+        android:textSize="8pt"
+        android:lineSpacingExtra="4sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonList" />
 
     <LinearLayout
         android:id="@+id/EnterGeneralTimeList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="230dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="200dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/generalTimeQuestion">
 
-       <EditText
+        <EditText
             android:id="@+id/EnterGeneralTimeInputHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_weight="0.45"
             android:background="@drawable/edit_text_border"
-            android:layout_weight="0.45"/>
+            android:ems="2"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="10pt" />
 
         <TextView
             android:id="@+id/hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="0.15"
             android:text="h"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="10pt"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_weight="0.15"
-            android:layout_marginLeft="2dp"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/EnterGeneralTimeInputMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_weight="0.45"
             android:background="@drawable/edit_text_border"
-            android:layout_weight="0.45"/>
+            android:ems="2"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="10pt" />
 
         <TextView
             android:id="@+id/minutes"
-            android:layout_width="wrap_content"
+            android:layout_width="51dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="0.25"
             android:text="min"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="10pt"
             android:textStyle="bold"
-            android:layout_marginLeft="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_weight="0.25"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
 
@@ -194,92 +195,105 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="270dp"
-        android:text="You answered you spend 0h and 0min on your phone. \nHow much of that time have you been productive for?"
+        android:layout_marginTop="25dp"
+        android:text="So you spend 0h and 0min on your phone."
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0."
+        android:textSize="8pt"
+        android:lineSpacingExtra="4sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/EnterGeneralTimeList" />
+
+    <TextView
+        android:id="@+id/productiveTimeQuestion1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:lineSpacingExtra="4sp"
+        android:text="How much of that time have you been \nproductive for?"
+        android:textColor="@color/colorBlack"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productiveTimeQuestion" />
+
 
     <LinearLayout
         android:id="@+id/EnterProductiveTimeList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginEnd="230dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="200dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/productiveTimeQuestion1">
 
         <EditText
             android:id="@+id/EnterProductiveTimeInputHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_weight="0.45"
             android:background="@drawable/edit_text_border"
-            android:layout_weight="0.45"/>
+            android:ems="2"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="10pt" />
 
         <TextView
             android:id="@+id/hours1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="0.15"
             android:text="h"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="10pt"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_weight="0.15"
-            android:layout_marginLeft="2dp"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/EnterProductiveTimeInputMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_weight="0.45"
             android:background="@drawable/edit_text_border"
-            android:layout_weight="0.45"/>
+            android:ems="2"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textSize="10pt" />
 
         <TextView
             android:id="@+id/minutes1"
-            android:layout_width="wrap_content"
+            android:layout_width="51dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="0.25"
             android:text="min"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="10pt"
             android:textStyle="bold"
-            android:layout_marginLeft="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_weight="0.25"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/answersHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="@font/roboto"
         android:text="All questions need to be answered"
         android:textColor="@color/colorRed"
-        android:textSize="11sp"
+        android:textSize="10pt"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/submitScreenTimeAnswers"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/submitScreenTimeAnswers"
@@ -289,6 +303,7 @@
         android:background="@drawable/submit_button_inactive"
         android:text="submit answers"
         android:textColor="@color/colorGrey"
+        android:textSize="12pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:text="ScreenTime"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="17pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
@@ -27,94 +27,89 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto"
         android:text="Welcome to the ScreenTime user study."
+        android:lineSpacingExtra="4sp"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Heading" />
 
-    <LinearLayout
-        android:id="@+id/EnterIdList"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/InfoText1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="180dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_weight="0.03"
+        android:fontFamily="@font/roboto"
+        android:text="Please enter your participation ID:"
+        android:textColor="@color/colorBlack"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/InfoText" />
 
-        <TextView
-            android:id="@+id/InfoText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.03"
-            android:fontFamily="@font/roboto"
-            android:text="Please enter your participation ID:"
-            android:textColor="@color/colorBlack"
-            android:textSize="11sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0."
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/EnterParticipationID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:background="@drawable/edit_text_border"
-            android:layout_weight="0.1"/>
-    </LinearLayout>
+    <EditText
+        android:id="@+id/EnterParticipationID"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.1"
+        android:background="@drawable/edit_text_border"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InfoText1" />
 
     <TextView
         android:id="@+id/InfoText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto"
         android:text="Please enter your API key:"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/EnterParticipationID" />
 
     <EditText
         android:id="@+id/EnterApiKey"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
+        android:gravity="center_horizontal"
         android:inputType="text"
+        android:textSize="8pt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/InfoText2" />
 
     <TextView
         android:id="@+id/InputHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="@font/roboto"
         android:text="Your participation ID and API key need to be added"
         android:textColor="@color/colorRed"
-        android:textSize="11sp"
+        android:textSize="10pt"
         android:visibility="invisible"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/StartButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/StartButton"
@@ -124,6 +119,7 @@
         android:background="@color/colorGreen"
         android:text="Start study"
         android:textColor="@color/colorWhite"
+        android:textSize="12pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

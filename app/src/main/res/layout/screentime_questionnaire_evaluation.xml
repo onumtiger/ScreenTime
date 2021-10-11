@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:text="ScreenTime"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="17pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
@@ -27,42 +27,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:text="Tuesday, 29.07.21"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp"
+        android:textSize="12pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
 
     <TextView
         android:id="@+id/scoreInfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="20dp"
         android:text="You rated your productivity with an A. \nActually your productivity score is:"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <LinearLayout
         android:id="@+id/buttonList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/scoreInfoText">
 
         <Button
             android:id="@+id/productivityScoreButtonA"
@@ -74,7 +73,7 @@
             android:textColor="@color/colorGrey"
             android:textColorHint="@android:color/transparent"
             android:textColorLink="@android:color/transparent"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonB"
@@ -84,7 +83,7 @@
             android:text="B"
             android:background="@null"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonC"
@@ -94,7 +93,7 @@
             android:text="C"
             android:background="@null"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonD"
@@ -104,7 +103,7 @@
             android:text="D"
             android:background="@null"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonE"
@@ -114,7 +113,7 @@
             android:text="E"
             android:background="@null"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
         <Button
             android:id="@+id/productivityScoreButtonF"
@@ -124,7 +123,7 @@
             android:text="F"
             android:background="@null"
             android:textColor="@color/colorGrey"
-            android:textSize="30sp" />
+            android:textSize="17pt" />
 
     </LinearLayout>
 
@@ -133,27 +132,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="25dp"
         android:text="You said you spend 1h 45min on your phone. \nActually you spend on your phone:"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonList" />
+
 
     <LinearLayout
         android:id="@+id/enterGeneralTimeList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="230dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/generalTimeQuestion">
 
         <TextView
             android:id="@+id/generalTimeSpend"
@@ -162,7 +161,7 @@
             android:layout_marginLeft="20dp"
             android:text="2h 10min"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="11pt"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
@@ -177,27 +176,26 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="20dp"
         android:text="You said you’ve been productive for 57min. \nActually you’ve been less productive."
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/enterGeneralTimeList" />
 
     <LinearLayout
         android:id="@+id/EnterProductiveTimeList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="230dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/productiveTimeQuestion">
 
         <TextView
             android:id="@+id/productiveTime"
@@ -206,7 +204,7 @@
             android:layout_marginLeft="20dp"
             android:text="2h 10min"
             android:textColor="@color/colorOrange"
-            android:textSize="20sp"
+            android:textSize="11pt"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0."
@@ -220,34 +218,34 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="410dp"
-        android:text="Are you happy about your actual screen time?"
+        android:layout_marginTop="20dp"
+        android:text="Are you happy about your actual \nscreen time?"
         android:textColor="@color/colorBlack"
-        android:textSize="11sp"
+        android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/EnterProductiveTimeList" />
 
     <LinearLayout
         android:id="@+id/EnterSatisfactionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="160dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/SatisfactionQuestion">
 
         <Button
             android:id="@+id/satisfactionButtonYes"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:background="@drawable/submit_button_active"
+            android:textSize="12pt"
             android:text="Yes"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -256,11 +254,12 @@
 
         <Button
             android:id="@+id/satisfactionButtonNo"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/submit_button_red"
+            android:textSize="12pt"
             android:text="No"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
