@@ -12,9 +12,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/phone_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@drawable/phone_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -34,6 +34,7 @@
         <activity android:name=".screenTimeQuestionnaireActivity" />
         <activity android:name=".screenTimeQuestionnaireEmptyActivity" />
         <activity android:name=".screenTimeQuestionnaireEvaluationActivity" />
+        <activity android:name=".rescueTimeReminderActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

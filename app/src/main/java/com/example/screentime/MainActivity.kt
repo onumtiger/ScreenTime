@@ -65,49 +65,56 @@ class MainActivity : AppCompatActivity() {
                     // update token to make sure it is always up to date
                     this.dbParticipants.document(currentParticipantID).update("token", token)
 
-                    checkGroup(currentParticipant, currentParticipantID, currentDate)
-                    when (checkQOneAnswered(currentParticipant)) {
-                        true -> {
-                            when (checkStudyPhase(currentDate, startDate)) {
-                                "noMeasuresOne" -> {
-                                    launchNoMeasuresOne(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
-                                }
-                                "measuresOne" -> {
-                                    checkGroup(currentParticipant, currentParticipantID, currentDate)
-                                }
-                                "measuresTwo" -> {
-                                    when (checkQTwoAnswered(currentParticipant)) {
-                                        false -> launchQTwo(currentParticipantID, currentDate, group)
-                                        true -> {
-                                            checkGroup(currentParticipant, currentParticipantID, currentDate)
-                                        }
+                    if(!checkRescueTimeActive(currentParticipant)){
+                        val intent = Intent(this, rescueTimeReminderActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    else {
+                        checkGroup(currentParticipant, currentParticipantID, currentDate)
+                        when (checkQOneAnswered(currentParticipant)) {
+                            true -> {
+                                when (checkStudyPhase(currentDate, startDate)) {
+                                    "noMeasuresOne" -> {
+                                        launchNoMeasuresOne(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
                                     }
-                                }
-                                "noMeasuresTwo" -> {
-                                    when (checkQTwoAnswered(currentParticipant)){
-                                        false -> launchQTwo(currentParticipantID, currentDate, group)
-                                        true -> {
-                                            when (checkQThreeAnswered(currentParticipant)) {
-                                                false -> launchQThree(currentParticipantID, currentDate, startDate)
-                                                true -> launchNoMeasuresTwo(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
+                                    "measuresOne" -> {
+                                        checkGroup(currentParticipant, currentParticipantID, currentDate)
+                                    }
+                                    "measuresTwo" -> {
+                                        when (checkQTwoAnswered(currentParticipant)) {
+                                            false -> launchQTwo(currentParticipantID, currentDate, group)
+                                            true -> {
+                                                checkGroup(currentParticipant, currentParticipantID, currentDate)
                                             }
                                         }
                                     }
-                                }
-                                "studyIsFinished" -> {
-                                    when (checkQTwoAnswered(currentParticipant)){
-                                        false -> launchQTwo(currentParticipantID, currentDate, group)
-                                        true -> {
-                                            when (checkQThreeAnswered(currentParticipant)) {
-                                                false -> launchQThree(currentParticipantID, currentDate, startDate)
-                                                true -> launchNoMeasuresTwo(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
+                                    "noMeasuresTwo" -> {
+                                        when (checkQTwoAnswered(currentParticipant)){
+                                            false -> launchQTwo(currentParticipantID, currentDate, group)
+                                            true -> {
+                                                when (checkQThreeAnswered(currentParticipant)) {
+                                                    false -> launchQThree(currentParticipantID, currentDate, startDate)
+                                                    true -> launchNoMeasuresTwo(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    "studyIsFinished" -> {
+                                        when (checkQTwoAnswered(currentParticipant)){
+                                            false -> launchQTwo(currentParticipantID, currentDate, group)
+                                            true -> {
+                                                when (checkQThreeAnswered(currentParticipant)) {
+                                                    false -> launchQThree(currentParticipantID, currentDate, startDate)
+                                                    true -> launchNoMeasuresTwo(currentParticipantID, currentDate, currentParticipant.getString("startDate")!!)
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
+                            false -> launchQOne(currentParticipantID, currentDate, startDate )
                         }
-                        false -> launchQOne(currentParticipantID, currentDate, startDate )
                     }
                 }
                 else {
@@ -267,5 +274,15 @@ class MainActivity : AppCompatActivity() {
             difference >= 7 -> "measuresOne"
             else -> "noMeasuresOne"
         }
+    }
+
+    private fun checkRescueTimeActive(currentParticipant: DocumentSnapshot): Boolean{
+        val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
+        val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
+
+        val sdfPoint = SimpleDateFormat("dd.M.")
+        val dateYesterday = sdfPoint.format(Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24)))
+
+        return lastScreenTimeEntry["date"].toString() == dateYesterday
     }
 }

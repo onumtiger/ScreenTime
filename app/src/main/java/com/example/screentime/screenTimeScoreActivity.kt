@@ -18,8 +18,8 @@ import java.lang.Exception
 import org.json.JSONArray
 
 import org.json.JSONObject
-
-
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class screenTimeScoreActivity: AppCompatActivity() {
@@ -62,7 +62,7 @@ class screenTimeScoreActivity: AppCompatActivity() {
         views["timeSpendView"]!!.text = content["timeSpend"]
         views["scoreView"]!!.text = content["score"].toString().uppercase()
         views["productiveTimeView"]!!.text = content["productiveTime"]
-        views["dateView"]!!.text = "${content["date"]}21"
+        views["dateView"]!!.text = "${getDay()}, ${content["date"]}21"
     }
 
 
@@ -76,5 +76,20 @@ class screenTimeScoreActivity: AppCompatActivity() {
             "productiveTime" to lastScreenTimeEntry["productiveTime"] as String,
             "date" to lastScreenTimeEntry["date"] as String,
         )
+    }
+
+    private fun getDay(): String{
+        val c: Calendar = Calendar.getInstance()
+        c.time = Date()
+
+        return when (c.get(Calendar.DAY_OF_WEEK)) {
+            1 -> "Saturday"
+            2 -> "Sunday"
+            3 -> "Monday"
+            4 -> "Tuesday"
+            5 -> "Wednesday"
+            6 -> "Thursday"
+            else -> "Friday"
+        }
     }
 }

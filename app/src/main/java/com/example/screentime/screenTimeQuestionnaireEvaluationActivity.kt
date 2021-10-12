@@ -12,6 +12,8 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.screentime_score.*
+import java.util.*
+import kotlin.collections.HashMap
 
 class screenTimeQuestionnaireEvaluationActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
@@ -56,7 +58,7 @@ class screenTimeQuestionnaireEvaluationActivity: AppCompatActivity() {
             val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap <Any, Any>
 
 
-            dateView.text = "${currentDate}.21"
+            dateView.text = "${getDay()}, ${currentDate}.21"
             scoreInfoText.text = "You rated your productivity with an ${lastScreenTimeEntry["score"]}. \nActually your productivity score is: "
             generalTimeQuestion.text = "You said you spend ${lastScreenTimeEntry["qATimeSpend"]} on your phone. \nActually you spend on your phone:"
             generalTimeSpend.text = lastScreenTimeEntry["timeSpend"].toString()
@@ -100,7 +102,20 @@ class screenTimeQuestionnaireEvaluationActivity: AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
 
+    private fun getDay(): String{
+        val c: Calendar = Calendar.getInstance()
+        c.time = Date()
 
+        return when (c.get(Calendar.DAY_OF_WEEK)) {
+            1 -> "Saturday"
+            2 -> "Sunday"
+            3 -> "Monday"
+            4 -> "Tuesday"
+            5 -> "Wednesday"
+            6 -> "Thursday"
+            else -> "Friday"
+        }
     }
 }

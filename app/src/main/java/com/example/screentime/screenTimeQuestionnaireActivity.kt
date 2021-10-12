@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.HashMap
 
 class screenTimeQuestionnaireActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
@@ -57,7 +59,7 @@ class screenTimeQuestionnaireActivity: AppCompatActivity() {
             val screenTimeEntriesList = currentParticipant.data?.get("screenTimeEntries") as HashMap <*, *>
             val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap<*,*>
 
-            dateView.text = "${currentDate}.21"
+            dateView.text = "${getDay()}, ${currentDate}.21"
             scoreInfoText.text = "You rated your productivity with an ${lastScreenTimeEntry["score"]}. \nActually your productivity score is: "
             generalTimeQuestion.text = "You said you spend ${lastScreenTimeEntry["qATimeSpend"]} on your phone. \nActually you spend on your phone:"
             generalTimeSpend.text = lastScreenTimeEntry["timeSpend"].toString()
@@ -77,6 +79,21 @@ class screenTimeQuestionnaireActivity: AppCompatActivity() {
                 lastScreenTimeEntry["evaluation"] == "no" -> satisfactionButtonYes.visibility = View.INVISIBLE
                 lastScreenTimeEntry["evaluation"] == "yes" -> satisfactionButtonNo.visibility = View.INVISIBLE
             }
+        }
+    }
+
+    private fun getDay(): String{
+        val c: Calendar = Calendar.getInstance()
+        c.time = Date()
+
+        return when (c.get(Calendar.DAY_OF_WEEK)) {
+            1 -> "Saturday"
+            2 -> "Sunday"
+            3 -> "Monday"
+            4 -> "Tuesday"
+            5 -> "Wednesday"
+            6 -> "Thursday"
+            else -> "Friday"
         }
     }
 }
