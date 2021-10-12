@@ -1,25 +1,19 @@
 package com.example.screentime
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.screentime_score.*
 import java.util.*
 import kotlin.collections.HashMap
 
 class screenTimeQuestionnaireEvaluationActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
-    @SuppressLint("ResourceAsColor", "LongLogTag")
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("screenTimeQuestionnaireEvaluationActivity", "screenTimeQuestionnaireEvaluationActivity")
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.screentime_questionnaire_evaluation)

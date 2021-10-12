@@ -3,21 +3,11 @@ package com.example.screentime
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import okhttp3.ResponseBody
-import java.lang.Exception
-import org.json.JSONArray
-
-import org.json.JSONObject
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -27,7 +17,6 @@ class screenTimeScoreActivity: AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("screenTimeScoreActivity", "screenTimeScoreActivity")
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
@@ -50,7 +39,6 @@ class screenTimeScoreActivity: AppCompatActivity() {
             val views = mutableMapOf("timeSpendView" to timeSpendView, "scoreView" to scoreView, "productiveTimeView" to productiveTimeView, "dateView" to dateView)
 
             val screenTimeInfo = getScreenTimeEntry(currentParticipant)
-            Log.d("here!", "here!")
             setViewData(
                 views,
                 screenTimeInfo

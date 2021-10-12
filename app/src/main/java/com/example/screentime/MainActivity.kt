@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
 import android.widget.EditText
-
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.google.firebase.firestore.CollectionReference
@@ -17,7 +15,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
-import android.content.ContentValues.TAG
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -28,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        Log.d("AppCompatActivity", "AppCompatActivity")
 
         // firebase collection
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
@@ -40,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         var token = ""
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
                 return@OnCompleteListener
             }
 
@@ -142,7 +137,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addDevice(userId: String, deviceId: String, currentDate: String, currentParticipantApiKey:String, token: String) {
-        Log.d("firebase", "add device")
         this.dbParticipants.document(userId).update("deviceId", deviceId)
         this.dbParticipants.document(userId).update("startDate", currentDate)
         this.dbParticipants.document(userId).update("apiKey", currentParticipantApiKey)
