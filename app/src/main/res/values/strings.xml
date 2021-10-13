@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ScreenTime</string>
+    <string name="app_name">ScreenTime Notifier</string>
     <string name="questionOne">Missing planned work due to smartphone use?</string>
     <string name="questionTwo">Having a hard time concentrating in class, while doing assignments, or while working due to smartphone use?</string>
     <string name="questionThree">Feeling pain in the wrists or at the back of the neck while using a smartphone?</string>
