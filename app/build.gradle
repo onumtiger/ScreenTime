@@ -46,6 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
     implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // guess thats not used at all (16.09.21)
     def coroutines_version = "1.2.1"

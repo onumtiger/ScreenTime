@@ -5,9 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -32,6 +34,7 @@ class screenTimeScoreActivity: AppCompatActivity() {
             val currentParticipant = snapshots.documents[0]
 
             setContentView(R.layout.screentime_score)
+            val swipeRefreshView: SwipeRefreshLayout = findViewById(R.id.swiperefresh)
             val timeSpendView: TextView = findViewById(R.id.timeSpend)
             val scoreView: TextView = findViewById(R.id.productivityScore)
             val productiveTimeView: TextView = findViewById(R.id.ProductiveTime)
@@ -43,6 +46,20 @@ class screenTimeScoreActivity: AppCompatActivity() {
                 views,
                 screenTimeInfo
             )
+
+            val sdf = SimpleDateFormat("dd.M")
+            val lastUpdated = sdf.format(Date())
+            swipeRefreshView.setOnRefreshListener {
+                val dateNow = sdf.format(Date())
+                if (lastUpdated != dateNow){
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else {
+                    swipeRefreshView.isRefreshing = false
+                }
+            }
         }
     }
 

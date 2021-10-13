@@ -1,14 +1,17 @@
 package com.example.screentime
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -27,6 +30,8 @@ class screenTimeQuestionnaireActivity: AppCompatActivity() {
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
 
         // view elements
+        val swipeRefreshView: SwipeRefreshLayout = findViewById(R.id.swiperefresh)
+
         val scoreButtonA = findViewById<Button>(R.id.productivityScoreButtonA)
         val scoreButtonB = findViewById<Button>(R.id.productivityScoreButtonB)
         val scoreButtonC = findViewById<Button>(R.id.productivityScoreButtonC)
@@ -74,6 +79,20 @@ class screenTimeQuestionnaireActivity: AppCompatActivity() {
             when (true) {
                 lastScreenTimeEntry["evaluation"] == "no" -> satisfactionButtonYes.visibility = View.INVISIBLE
                 lastScreenTimeEntry["evaluation"] == "yes" -> satisfactionButtonNo.visibility = View.INVISIBLE
+            }
+
+            val sdf = SimpleDateFormat("dd.M")
+            val lastUpdated = sdf.format(Date())
+            swipeRefreshView.setOnRefreshListener {
+                val dateNow = sdf.format(Date())
+                if (lastUpdated != dateNow){
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else {
+                    swipeRefreshView.isRefreshing = false
+                }
             }
         }
     }
