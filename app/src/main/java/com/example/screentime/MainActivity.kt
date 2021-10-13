@@ -56,11 +56,12 @@ class MainActivity : AppCompatActivity() {
                     val currentParticipantID = currentParticipant.get("studyID").toString()
                     val startDate = currentParticipant.getString("startDate")!!
                     val group = currentParticipant.getString("group")!!
+                    val qOneAnswered = currentParticipant["qOne"] as Boolean
 
                     // update token to make sure it is always up to date
                     this.dbParticipants.document(currentParticipantID).update("token", token)
 
-                    if(!checkRescueTimeActive(currentParticipant)){
+                    if(!checkRescueTimeActive(currentParticipant) && qOneAnswered){
                         val intent = Intent(this, rescueTimeReminderActivity::class.java)
                         startActivity(intent)
                         finish()
