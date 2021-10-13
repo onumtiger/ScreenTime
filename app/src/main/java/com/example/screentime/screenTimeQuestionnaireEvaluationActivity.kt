@@ -52,7 +52,7 @@ class screenTimeQuestionnaireEvaluationActivity: AppCompatActivity() {
             val lastScreenTimeEntry = screenTimeEntriesList[screenTimeEntriesList.size.toString()] as HashMap <Any, Any>
 
 
-            dateView.text = "${getDay()}, ${currentDate}.21"
+            dateView.text = "${getDay()}, ${lastScreenTimeEntry["date"]}21"
             scoreInfoText.text = "You rated your productivity with an ${lastScreenTimeEntry["score"]}. \nActually your productivity score is: "
             generalTimeQuestion.text = "You said you spend ${lastScreenTimeEntry["qATimeSpend"]} on your phone. \nActually you spend on your phone:"
             generalTimeSpend.text = lastScreenTimeEntry["timeSpend"].toString()
