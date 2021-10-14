@@ -22,7 +22,7 @@ class screenTimeScoreActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
-        val userId:String = intent.getStringExtra("currentParticipantID")
+        val userId:String = intent.getStringExtra("currentParticipantID").toString()
 
         // get user from firebase
         dbParticipants.whereEqualTo("studyID", userId).get().addOnSuccessListener { snapshots ->

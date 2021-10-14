@@ -17,11 +17,11 @@ class noMeasuresOneActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
-        val userId:String = intent.getStringExtra("currentParticipantID")
+        val userId: String = intent.getStringExtra("currentParticipantID").toString()
         setContentView(R.layout.no_measures_one)
         val infoTextView: TextView = findViewById(R.id.InfoText)
-        val currentDate:String = intent.getStringExtra("currentDate")
-        val startDate:String = intent.getStringExtra("startDate")
+        val currentDate:String = intent.getStringExtra("currentDate").toString()
+        val startDate:String = intent.getStringExtra("startDate").toString()
 
 
         // get user from firebase

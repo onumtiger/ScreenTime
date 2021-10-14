@@ -13,8 +13,8 @@ class noMeasuresTwoActivity: AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.no_measures_two)
         val infoTextView: TextView = findViewById(R.id.InfoText)
-        val currentDate:String = intent.getStringExtra("currentDate")
-        val startDate:String = intent.getStringExtra("startDate")
+        val currentDate:String = intent.getStringExtra("currentDate").toString()
+        val startDate:String = intent.getStringExtra("startDate").toString()
         val daysUntilStart = daysUntilStart(currentDate, startDate)
         if (daysUntilStart > 0) {
             infoTextView.text = "Currently your ScreenTime behavior is measured. \nThe actual study ends in $daysUntilStart days."

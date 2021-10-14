@@ -17,8 +17,8 @@ class screenTimeQuestionnaireEvaluationActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.screentime_questionnaire_evaluation)
-        val userId:String = intent.getStringExtra("currentParticipantID")
-        val currentDate:String = intent.getStringExtra("currentDate")
+        val userId:String = intent.getStringExtra("currentParticipantID").toString()
+        val currentDate:String = intent.getStringExtra("currentDate").toString()
 
         // firebase
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")

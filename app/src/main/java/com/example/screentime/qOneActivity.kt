@@ -30,9 +30,9 @@ class qOneActivity: AppCompatActivity() {
         // firebase
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
         setContentView(R.layout.q_one)
-        val userId:String = intent.getStringExtra("currentParticipantID")
-        val currentDate:String = intent.getStringExtra("currentDate")
-        val startDate:String = intent.getStringExtra("startDate")
+        val userId:String = intent.getStringExtra("currentParticipantID").toString()
+        val currentDate:String = intent.getStringExtra("currentDate").toString()
+        val startDate:String = intent.getStringExtra("startDate").toString()
         submitButton = findViewById(R.id.SubmitQOne)
         val submitQOneHintView = findViewById<TextView>(R.id.SubmitQOneHint)
 

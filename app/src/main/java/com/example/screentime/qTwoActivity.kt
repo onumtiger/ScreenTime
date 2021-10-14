@@ -30,9 +30,9 @@ class qTwoActivity: AppCompatActivity() {
         // firebase
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
         setContentView(R.layout.q_two)
-        val userId:String = intent.getStringExtra("currentParticipantID")
-        val currentDate:String = intent.getStringExtra("currentDate")
-        val group:String = intent.getStringExtra("group")
+        val userId:String = intent.getStringExtra("currentParticipantID").toString()
+        val currentDate:String = intent.getStringExtra("currentDate").toString()
+        val group:String = intent.getStringExtra("group").toString()
         submitButton = findViewById(R.id.SubmitQTwo)
         val submitQTwoHintView = findViewById<TextView>(R.id.SubmitQTwoHint)
 
