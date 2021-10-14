@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:246719503947:android:e6106976e168165811b7ce",
         "android_client_info": {
-          "package_name": "com.example.screentime"
+          "package_name": "com.onumbu.screentimenotifier"
         }
       },
       "oauth_client": [

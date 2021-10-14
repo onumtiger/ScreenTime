@@ -1,4 +1,4 @@
-package com.example.screentime
+package com.onumbu.screentimenotifier
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,7 +12,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class qTwoActivity: AppCompatActivity() {
+class qOneActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
     var questionOneAnswer = ""
     var questionTwoAnswer = ""
@@ -29,50 +29,34 @@ class qTwoActivity: AppCompatActivity() {
         supportActionBar?.hide()
         // firebase
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
-        setContentView(R.layout.q_two)
+        setContentView(R.layout.q_one)
         val userId:String = intent.getStringExtra("currentParticipantID").toString()
         val currentDate:String = intent.getStringExtra("currentDate").toString()
-        val group:String = intent.getStringExtra("group").toString()
-        submitButton = findViewById(R.id.SubmitQTwo)
-        val submitQTwoHintView = findViewById<TextView>(R.id.SubmitQTwoHint)
+        val startDate:String = intent.getStringExtra("startDate").toString()
+        submitButton = findViewById(R.id.SubmitQOne)
+        val submitQOneHintView = findViewById<TextView>(R.id.SubmitQOneHint)
 
         submitButton.setOnClickListener{
             if (Collections.frequency(questionnairesAnsweres.values, "") == 0) {
-                dbParticipants.document("$userId").update("qTwoAnswers", questionnairesAnsweres)
-                dbParticipants.document("$userId").update("qTwo", true)
+                dbParticipants.document("$userId").update("qOneAnswers", questionnairesAnsweres)
+                dbParticipants.document("$userId").update("qOne", true)
 
-                checkGroup(userId, group, currentDate)
+                launchNoMeasuresOne(userId, currentDate, startDate)
             }
             else{
-                submitQTwoHintView.visibility = View.VISIBLE
+                submitQOneHintView.visibility = View.VISIBLE
             }
         }
     }
 
-    // change group to other user group
-    private fun checkGroup(userId: String, group: String, currentDate: String) {
-        when (group) {
-            "a" -> {
-                dbParticipants.document("$userId").update("group", "b")
-
-                val intent = Intent(this, screenTimeQuestionnaireEmptyActivity::class.java)
-                intent.putExtra("currentDate", currentDate)
-                intent.putExtra("currentParticipantID", userId)
-                startActivity(intent)
-                finish()
-            }
-            "b" -> {
-                dbParticipants.document("$userId").update("group", "a")
-
-                val intent = Intent(this, screenTimeScoreActivity::class.java)
-                intent.putExtra("currentDate", currentDate)
-                intent.putExtra("currentParticipantID", userId)
-                startActivity(intent)
-                finish()
-            }
-        }
+    private fun launchNoMeasuresOne(currentParticipantID: String, currentDate: String, startDate: String){
+        val intent = Intent(this, noMeasuresOneActivity::class.java)
+        intent.putExtra("currentParticipantID", currentParticipantID)
+        intent.putExtra("currentDate", currentDate)
+        intent.putExtra("startDate", startDate)
+        startActivity(intent)
+        finish()
     }
-
 
     fun activateSubmitButton(){
         this.questionnairesAnsweres = mutableMapOf(

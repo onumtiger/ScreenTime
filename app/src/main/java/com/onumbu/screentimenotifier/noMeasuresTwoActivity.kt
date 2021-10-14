@@ -1,4 +1,4 @@
-package com.example.screentime
+package com.onumbu.screentimenotifier
 
 import android.annotation.SuppressLint
 import android.os.Bundle
