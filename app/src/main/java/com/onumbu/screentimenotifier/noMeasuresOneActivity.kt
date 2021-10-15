@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
 
 class noMeasuresOneActivity: AppCompatActivity() {
     lateinit var dbParticipants: CollectionReference
@@ -19,6 +22,7 @@ class noMeasuresOneActivity: AppCompatActivity() {
         dbParticipants = FirebaseFirestore.getInstance().collection("participants")
         val userId: String = intent.getStringExtra("currentParticipantID").toString()
         setContentView(R.layout.no_measures_one)
+        val swipeRefreshView: SwipeRefreshLayout = findViewById(R.id.swiperefresh)
         val infoTextView: TextView = findViewById(R.id.InfoText)
         val currentDate:String = intent.getStringExtra("currentDate").toString()
         val startDate:String = intent.getStringExtra("startDate").toString()
@@ -35,6 +39,20 @@ class noMeasuresOneActivity: AppCompatActivity() {
 
             val daysUntilStart = daysUntilStart(currentDate, startDate, userId, group)
             infoTextView.text = "Currently your ScreenTime behavior is measured. \nThe actual study begins in $daysUntilStart days."
+        }
+
+        val sdf = SimpleDateFormat("dd.M")
+        val lastUpdated = sdf.format(Date())
+        swipeRefreshView.setOnRefreshListener {
+            val dateNow = sdf.format(Date())
+            if (lastUpdated != dateNow){
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            else {
+                swipeRefreshView.isRefreshing = false
+            }
         }
     }
 
