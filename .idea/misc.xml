@@ -9,9 +9,9 @@
         <entry key="app/src/main/res/layout/blocked_overview.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/no_measures_one.xml" value="0.43802083333333336" />
         <entry key="app/src/main/res/layout/no_measures_two.xml" value="0.44067028985507245" />
-        <entry key="app/src/main/res/layout/q_one.xml" value="0.319567354965585" />
-        <entry key="app/src/main/res/layout/q_three.xml" value="0.44067028985507245" />
-        <entry key="app/src/main/res/layout/q_two.xml" value="0.44067028985507245" />
+        <entry key="app/src/main/res/layout/q_one.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/q_three.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/q_two.xml" value="0.40378343118069143" />
         <entry key="app/src/main/res/layout/rescue_time_reminder.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/screentime_history_entry_questionnaire.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_history_entry_score.xml" value="0.428125" />

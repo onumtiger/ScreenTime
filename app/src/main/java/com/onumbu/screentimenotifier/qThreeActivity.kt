@@ -20,6 +20,10 @@ class qThreeActivity: AppCompatActivity() {
     var questionFourAnswer = ""
     var questionFiveAnswer = ""
     var questionSixAnswer = ""
+    var questionSevenAnswer = ""
+    var questionEightAnswer = ""
+    var questionNineAnswer = ""
+    var questionTenAnswer = ""
     lateinit var questionnairesAnsweres: MutableMap<String, String>
     lateinit var submitButton: Button
 
@@ -64,7 +68,11 @@ class qThreeActivity: AppCompatActivity() {
             "3" to this.questionThreeAnswer,
             "4" to this.questionFourAnswer,
             "5" to this.questionFiveAnswer,
-            "6" to this.questionSixAnswer
+            "6" to this.questionSixAnswer,
+            "7" to this.questionSevenAnswer,
+            "8" to this.questionEightAnswer,
+            "9" to this.questionNineAnswer,
+            "10" to this.questionTenAnswer
         )
 
         if (Collections.frequency(questionnairesAnsweres.values, "") == 0){
@@ -273,6 +281,142 @@ class qThreeActivity: AppCompatActivity() {
                 R.id.questionSixAnswerSix ->
                     if (checked) {
                         this.questionSixAnswer = resources.getString(R.string.stronglyAgree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionSevenClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionSevenAnswerOne ->
+                    if (checked) {
+                        this.questionSevenAnswer = resources.getString(R.string.stronglyDisagree)
+                    }
+                R.id.questionSevenAnswerTwo ->
+                    if (checked) {
+                        this.questionSevenAnswer = resources.getString(R.string.disagree)
+                    }
+                R.id.questionSevenAnswerThree ->
+                    if (checked) {
+                        this.questionSevenAnswer = resources.getString(R.string.slightlyDisagree)
+                    }
+                R.id.questionSevenAnswerFour ->
+                    if (checked) {
+                        this.questionSevenAnswer = resources.getString(R.string.slightlyAgree)
+                    }
+                R.id.questionSevenAnswerFive ->
+                    if (checked) {
+                        this.questionSevenAnswer = resources.getString(R.string.agree)
+                    }
+                R.id.questionSevenAnswerSix ->
+                    if (checked) {
+                        this.questionSevenAnswer = resources.getString(R.string.stronglyAgree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionEightClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionEightAnswerOne ->
+                    if (checked) {
+                        this.questionEightAnswer = resources.getString(R.string.stronglyDisagree)
+                    }
+                R.id.questionEightAnswerTwo ->
+                    if (checked) {
+                        this.questionEightAnswer = resources.getString(R.string.disagree)
+                    }
+                R.id.questionEightAnswerThree ->
+                    if (checked) {
+                        this.questionEightAnswer = resources.getString(R.string.slightlyDisagree)
+                    }
+                R.id.questionEightAnswerFour ->
+                    if (checked) {
+                        this.questionEightAnswer = resources.getString(R.string.slightlyAgree)
+                    }
+                R.id.questionEightAnswerFive ->
+                    if (checked) {
+                        this.questionEightAnswer = resources.getString(R.string.agree)
+                    }
+                R.id.questionEightAnswerSix ->
+                    if (checked) {
+                        this.questionEightAnswer = resources.getString(R.string.stronglyAgree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionNineClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionNineAnswerOne ->
+                    if (checked) {
+                        this.questionNineAnswer = resources.getString(R.string.stronglyDisagree)
+                    }
+                R.id.questionNineAnswerTwo ->
+                    if (checked) {
+                        this.questionNineAnswer = resources.getString(R.string.disagree)
+                    }
+                R.id.questionNineAnswerThree ->
+                    if (checked) {
+                        this.questionNineAnswer = resources.getString(R.string.slightlyDisagree)
+                    }
+                R.id.questionNineAnswerFour ->
+                    if (checked) {
+                        this.questionNineAnswer = resources.getString(R.string.slightlyAgree)
+                    }
+                R.id.questionNineAnswerFive ->
+                    if (checked) {
+                        this.questionNineAnswer = resources.getString(R.string.agree)
+                    }
+                R.id.questionNineAnswerSix ->
+                    if (checked) {
+                        this.questionNineAnswer = resources.getString(R.string.stronglyAgree)
+                    }
+            }
+        }
+        activateSubmitButton()
+    }
+
+    fun questionTenClicked(view: View) {
+        if (view is RadioButton) {
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.questionTenAnswerOne ->
+                    if (checked) {
+                        this.questionTenAnswer = resources.getString(R.string.stronglyDisagree)
+                    }
+                R.id.questionTenAnswerTwo ->
+                    if (checked) {
+                        this.questionTenAnswer = resources.getString(R.string.disagree)
+                    }
+                R.id.questionTenAnswerThree ->
+                    if (checked) {
+                        this.questionTenAnswer = resources.getString(R.string.slightlyDisagree)
+                    }
+                R.id.questionTenAnswerFour ->
+                    if (checked) {
+                        this.questionTenAnswer = resources.getString(R.string.slightlyAgree)
+                    }
+                R.id.questionTenAnswerFive ->
+                    if (checked) {
+                        this.questionTenAnswer = resources.getString(R.string.agree)
+                    }
+                R.id.questionSixAnswerSix ->
+                    if (checked) {
+                        this.questionTenAnswer = resources.getString(R.string.stronglyAgree)
                     }
             }
         }

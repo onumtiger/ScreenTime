@@ -899,7 +899,7 @@
             </RadioGroup>
 
             <LinearLayout
-                android:id="@+id/lastAnswers"
+                android:id="@+id/linearLayout6"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -909,6 +909,615 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questionSixButtons">
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/disagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/agree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/questionSeven"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/questionSeven"
+                android:textColor="@color/colorBlack"
+                android:textSize="8pt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+            <RadioGroup
+                android:id="@+id/questionSevenButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionSeven">
+
+                <RadioButton
+                    android:id="@+id/questionSevenAnswerOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionSevenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionSevenAnswerTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionSevenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionSevenAnswerThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionSevenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionSevenAnswerFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionSevenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionSevenAnswerFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionSevenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionSevenAnswerSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionSevenClicked" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionSevenButtons">
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/disagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/agree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/questionEight"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/questionEight"
+                android:textColor="@color/colorBlack"
+                android:textSize="8pt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+            <RadioGroup
+                android:id="@+id/questionEightButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionEight">
+
+                <RadioButton
+                    android:id="@+id/questionEightAnswerOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionEightClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionEightAnswerTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionEightClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionEightAnswerThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionEightClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionEightAnswerFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionEightClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionEightAnswerFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionEightClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionEightAnswerSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionEightClicked" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionEightButtons">
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/disagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/agree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/questionNine"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/questionNine"
+                android:textColor="@color/colorBlack"
+                android:textSize="8pt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+            <RadioGroup
+                android:id="@+id/questionNineButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionNine">
+
+                <RadioButton
+                    android:id="@+id/questionNineAnswerOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionNineClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionNineAnswerTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionNineClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionNineAnswerThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionNineClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionNineAnswerFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionNineClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionNineAnswerFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionNineClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionNineAnswerSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionNineClicked" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/linearLayout9"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionNineButtons">
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/disagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyDisagree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/slightlyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.01"
+                    android:text="@string/agree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.01"
+                    android:text="@string/stronglyAgree"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="6pt" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/questionTen"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/questionTen"
+                android:textColor="@color/colorBlack"
+                android:textSize="8pt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
+
+            <RadioGroup
+                android:id="@+id/questionTenButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionTen"
+                tools:ignore="MissingConstraints">
+
+                <RadioButton
+                    android:id="@+id/questionTenAnswerOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionTenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionTenAnswerTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionTenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionTenAnswerThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionTenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionTenAnswerFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionTenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionTenAnswerFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionTenClicked" />
+
+                <RadioButton
+                    android:id="@+id/questionTenAnswerSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:buttonTint="@color/colorGreen"
+                    android:minHeight="48dp"
+                    android:onClick="questionTenClicked" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/lastAnswers"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionTenButtons">
 
                 <TextView
                     android:layout_width="61dp"
