@@ -51,7 +51,7 @@
 
             <TextView
                 android:id="@+id/questionOne"
-                android:layout_width="376dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -66,7 +66,7 @@
 
             <RadioGroup
                 android:id="@+id/questionOneButtons"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:onClick="questionOneClicked" />
 
                 <RadioButton
@@ -93,14 +93,14 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:onClick="questionOneClicked" />
 
                 <RadioButton
                     android:id="@+id/questionOneAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorGreen"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
 
@@ -118,7 +118,7 @@
                     android:id="@+id/questionOneAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
@@ -127,7 +127,7 @@
                     android:id="@+id/questionOneAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionOneClicked" />
@@ -135,7 +135,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -205,7 +205,7 @@
 
             <TextView
                 android:id="@+id/questionTwo"
-                android:layout_width="380dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
@@ -220,7 +220,7 @@
 
             <RadioGroup
                 android:id="@+id/questionTwoButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
@@ -235,7 +235,7 @@
                     android:id="@+id/questionTwoAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
@@ -244,7 +244,7 @@
                     android:id="@+id/questionTwoAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
@@ -253,7 +253,7 @@
                     android:id="@+id/questionTwoAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
@@ -262,7 +262,7 @@
                     android:id="@+id/questionTwoAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
@@ -271,7 +271,7 @@
                     android:id="@+id/questionTwoAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
@@ -280,7 +280,7 @@
                     android:id="@+id/questionTwoAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTwoClicked" />
@@ -288,7 +288,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -358,7 +358,7 @@
 
             <TextView
                 android:id="@+id/questionThree"
-                android:layout_width="383dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -373,7 +373,7 @@
 
             <RadioGroup
                 android:id="@+id/questionThreeButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -388,7 +388,7 @@
                     android:id="@+id/questionThreeAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
@@ -397,7 +397,7 @@
                     android:id="@+id/questionThreeAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
@@ -406,7 +406,7 @@
                     android:id="@+id/questionThreeAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
@@ -415,7 +415,7 @@
                     android:id="@+id/questionThreeAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
@@ -424,7 +424,7 @@
                     android:id="@+id/questionThreeAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
@@ -433,7 +433,7 @@
                     android:id="@+id/questionThreeAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionThreeClicked" />
@@ -441,7 +441,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -511,7 +511,7 @@
 
             <TextView
                 android:id="@+id/questionFour"
-                android:layout_width="378dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -526,7 +526,7 @@
 
             <RadioGroup
                 android:id="@+id/questionFourButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -540,7 +540,7 @@
                     android:id="@+id/questionFourAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
@@ -549,7 +549,7 @@
                     android:id="@+id/questionFourAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
@@ -558,7 +558,7 @@
                     android:id="@+id/questionFourAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
@@ -567,7 +567,7 @@
                     android:id="@+id/questionFourAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
@@ -576,7 +576,7 @@
                     android:id="@+id/questionFourAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
@@ -585,7 +585,7 @@
                     android:id="@+id/questionFourAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFourClicked" />
@@ -593,7 +593,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -663,7 +663,7 @@
 
             <TextView
                 android:id="@+id/questionFive"
-                android:layout_width="382dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -678,7 +678,7 @@
 
             <RadioGroup
                 android:id="@+id/questionFiveButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
@@ -694,7 +694,7 @@
                     android:id="@+id/questionFiveAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
@@ -703,7 +703,7 @@
                     android:id="@+id/questionFiveAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
@@ -712,7 +712,7 @@
                     android:id="@+id/questionFiveAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
@@ -721,7 +721,7 @@
                     android:id="@+id/questionFiveAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
@@ -730,7 +730,7 @@
                     android:id="@+id/questionFiveAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
@@ -739,7 +739,7 @@
                     android:id="@+id/questionFiveAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionFiveClicked" />
@@ -747,7 +747,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -816,7 +816,7 @@
 
             <TextView
                 android:id="@+id/questionSix"
-                android:layout_width="383dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -831,7 +831,7 @@
 
             <RadioGroup
                 android:id="@+id/questionSixButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -847,7 +847,7 @@
                     android:id="@+id/questionSixAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
@@ -856,7 +856,7 @@
                     android:id="@+id/questionSixAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
@@ -865,7 +865,7 @@
                     android:id="@+id/questionSixAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
@@ -874,7 +874,7 @@
                     android:id="@+id/questionSixAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
@@ -883,7 +883,7 @@
                     android:id="@+id/questionSixAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
@@ -892,7 +892,7 @@
                     android:id="@+id/questionSixAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSixClicked" />
@@ -900,7 +900,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout6"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -969,7 +969,7 @@
 
             <TextView
                 android:id="@+id/questionSeven"
-                android:layout_width="382dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -984,7 +984,7 @@
 
             <RadioGroup
                 android:id="@+id/questionSevenButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
@@ -999,7 +999,7 @@
                     android:id="@+id/questionSevenAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSevenClicked" />
@@ -1008,7 +1008,7 @@
                     android:id="@+id/questionSevenAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSevenClicked" />
@@ -1017,7 +1017,7 @@
                     android:id="@+id/questionSevenAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSevenClicked" />
@@ -1026,7 +1026,7 @@
                     android:id="@+id/questionSevenAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSevenClicked" />
@@ -1035,7 +1035,7 @@
                     android:id="@+id/questionSevenAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSevenClicked" />
@@ -1044,7 +1044,7 @@
                     android:id="@+id/questionSevenAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionSevenClicked" />
@@ -1052,7 +1052,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout7"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -1121,7 +1121,7 @@
 
             <TextView
                 android:id="@+id/questionEight"
-                android:layout_width="382dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -1136,7 +1136,7 @@
 
             <RadioGroup
                 android:id="@+id/questionEightButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
@@ -1151,7 +1151,7 @@
                     android:id="@+id/questionEightAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionEightClicked" />
@@ -1160,7 +1160,7 @@
                     android:id="@+id/questionEightAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionEightClicked" />
@@ -1169,7 +1169,7 @@
                     android:id="@+id/questionEightAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionEightClicked" />
@@ -1178,7 +1178,7 @@
                     android:id="@+id/questionEightAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionEightClicked" />
@@ -1187,7 +1187,7 @@
                     android:id="@+id/questionEightAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionEightClicked" />
@@ -1196,7 +1196,7 @@
                     android:id="@+id/questionEightAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionEightClicked" />
@@ -1204,7 +1204,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout8"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -1273,7 +1273,7 @@
 
             <TextView
                 android:id="@+id/questionNine"
-                android:layout_width="382dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -1288,7 +1288,7 @@
 
             <RadioGroup
                 android:id="@+id/questionNineButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
@@ -1303,7 +1303,7 @@
                     android:id="@+id/questionNineAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionNineClicked" />
@@ -1312,7 +1312,7 @@
                     android:id="@+id/questionNineAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionNineClicked" />
@@ -1321,7 +1321,7 @@
                     android:id="@+id/questionNineAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionNineClicked" />
@@ -1330,7 +1330,7 @@
                     android:id="@+id/questionNineAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionNineClicked" />
@@ -1339,7 +1339,7 @@
                     android:id="@+id/questionNineAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionNineClicked" />
@@ -1348,7 +1348,7 @@
                     android:id="@+id/questionNineAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionNineClicked" />
@@ -1356,7 +1356,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout9"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -1425,7 +1425,7 @@
 
             <TextView
                 android:id="@+id/questionTen"
-                android:layout_width="382dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -1440,7 +1440,7 @@
 
             <RadioGroup
                 android:id="@+id/questionTenButtons"
-                android:layout_width="match_parent"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
@@ -1456,7 +1456,7 @@
                     android:id="@+id/questionTenAnswerOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTenClicked" />
@@ -1465,7 +1465,7 @@
                     android:id="@+id/questionTenAnswerTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTenClicked" />
@@ -1474,7 +1474,7 @@
                     android:id="@+id/questionTenAnswerThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTenClicked" />
@@ -1483,7 +1483,7 @@
                     android:id="@+id/questionTenAnswerFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTenClicked" />
@@ -1492,7 +1492,7 @@
                     android:id="@+id/questionTenAnswerFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTenClicked" />
@@ -1501,7 +1501,7 @@
                     android:id="@+id/questionTenAnswerSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginHorizontal="30dp"
                     android:buttonTint="@color/colorGreen"
                     android:minHeight="48dp"
                     android:onClick="questionTenClicked" />
@@ -1509,7 +1509,7 @@
 
             <LinearLayout
                 android:id="@+id/lastAnswers"
-                android:layout_width="370dp"
+                android:layout_width="550dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -1599,7 +1599,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="150dp"
                 android:background="@drawable/submit_button_inactive"
                 android:text="submit answers"
                 android:textSize="12pt"

@@ -24,7 +24,18 @@ class qOneActivity: AppCompatActivity() {
     var questionEightAnswer = ""
     var questionNineAnswer = ""
     var questionTenAnswer = ""
-    lateinit var questionnairesAnsweres: MutableMap<String, String>
+    var questionnairesAnsweres = mutableMapOf(
+    "1" to this.questionOneAnswer,
+    "2" to this.questionTwoAnswer,
+    "3" to this.questionThreeAnswer,
+    "4" to this.questionFourAnswer,
+    "5" to this.questionFiveAnswer,
+    "6" to this.questionSixAnswer,
+    "7" to this.questionSevenAnswer,
+    "8" to this.questionEightAnswer,
+    "9" to this.questionNineAnswer,
+    "10" to this.questionTenAnswer
+    )
     lateinit var submitButton: Button
 
     @SuppressLint("ResourceAsColor")

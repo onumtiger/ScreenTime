@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.view.View
@@ -58,10 +59,12 @@ class MainActivity : AppCompatActivity() {
                     val group = currentParticipant.getString("group")!!
                     val qOneAnswered = currentParticipant["qOne"] as Boolean
 
-                    // update token to make sure it is always up to date
-                    this.dbParticipants.document(currentParticipantID).update("token", token)
+                    var tokenFirebase = currentParticipant.getString("token")!!
+                    if (tokenFirebase == ""){
+                        this.dbParticipants.document(currentParticipantID).update("token", token)
+                    }
 
-                    if(!checkRescueTimeActive(currentParticipant) && qOneAnswered && currentDate != startDate){
+                    if(!checkRescueTimeActive(currentParticipant) && qOneAnswered){
                         val intent = Intent(this, rescueTimeReminderActivity::class.java)
                         startActivity(intent)
                         finish()

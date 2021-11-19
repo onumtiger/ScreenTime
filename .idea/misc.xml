@@ -5,19 +5,20 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3328125" />
         <entry key="app/src/main/res/font/roboto_slab.xml" value="0.36822916666666666" />
+        <entry key="app/src/main/res/layout-land/q_one.xml" value="0.27292768959435626" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/blocked_overview.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/no_measures_one.xml" value="0.43802083333333336" />
         <entry key="app/src/main/res/layout/no_measures_two.xml" value="0.44067028985507245" />
-        <entry key="app/src/main/res/layout/q_one.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/q_three.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/q_one.xml" value="0.22075606276747503" />
+        <entry key="app/src/main/res/layout/q_three.xml" value="0.5" />
         <entry key="app/src/main/res/layout/q_two.xml" value="0.40378343118069143" />
         <entry key="app/src/main/res/layout/rescue_time_reminder.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/screentime_history_entry_questionnaire.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_history_entry_score.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_history_list.xml" value="0.428125" />
         <entry key="app/src/main/res/layout/screentime_questionnaire.xml" value="0.2709030100334448" />
-        <entry key="app/src/main/res/layout/screentime_questionnaire_empty.xml" value="0.626263071264551" />
+        <entry key="app/src/main/res/layout/screentime_questionnaire_empty.xml" value="0.300808158181107" />
         <entry key="app/src/main/res/layout/screentime_questionnaire_evaluation.xml" value="0.18697916666666667" />
         <entry key="app/src/main/res/layout/screentime_score.xml" value="0.3632538569424965" />
       </map>
